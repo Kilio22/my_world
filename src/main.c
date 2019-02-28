@@ -46,7 +46,7 @@ sfVertexArray *create_line(sfVector2f *point1, sfVector2f *point2, princi_t *pri
 
     sfVertexArray_append(vertex_array, vertex1);
     sfVertexArray_append(vertex_array, vertex2);
-    sfVertexArray_setPrimitiveType(vertex_array, sfQuads);
+    sfVertexArray_setPrimitiveType(vertex_array, sfLinesStrip);
     sfRenderWindow_drawVertexArray(princi->window, vertex_array, NULL);
     return (vertex_array);
 }
@@ -67,27 +67,6 @@ int draw_2d_map(princi_t *princi)
     return (0);
 }
 
-int create_quad(princi_t *princi, int x)
-{
-    sfVertexArray *quad = sfVertexArray_create();
-    sfVector2f vec1 = project_iso_point(x, x, 0);
-    sfVector2f vec2 = project_iso_point(100 + x , x + 20, 0);
-    sfVector2f vec3 = project_iso_point(100 + x, 100 + x, 0);
-    sfVector2f vec4 = project_iso_point(x + 20, 100 + x, 0);
-
-    sfVertex vertex1 = {.position = vec1, .color = sfBlue};
-    sfVertex vertex2 = {.position = vec2, .color = sfBlue};
-    sfVertex vertex3 = {.position = vec3, .color = sfBlue};
-    sfVertex vertex4 = {.position = vec4, .color = sfBlue};
-    sfVertexArray_append(quad, vertex1);
-    sfVertexArray_append(quad, vertex2);
-    sfVertexArray_append(quad, vertex3);
-    sfVertexArray_append(quad, vertex4);
-    sfVertexArray_setPrimitiveType(quad, sfQuads);
-    sfRenderWindow_drawVertexArray(princi->window, quad, NULL);
-    return (0);
-}
-
 int check_event(princi_t *princi)
 {
     while (sfRenderWindow_pollEvent(princi->window, &princi->event)) {
@@ -100,19 +79,13 @@ int check_event(princi_t *princi)
 int main(int ac, char **av)
 {
     princi_t princi;
-    int x = 10;
 
     av[ac - 1] = "";
     create_window(&princi);
     while (sfRenderWindow_isOpen(princi.window)) {
         if (check_event(&princi) == 1)
             break;
-        //draw_2d_map(&princi);
-        for (int i = 0; i < 4; i++) {
-            create_quad(&princi, x);
-            x += 10;
-        }
-        x = 10;
+        draw_2d_map(&princi);
         sfRenderWindow_display(princi.window);
         sfRenderWindow_clear(princi.window, sfBlack);
     }
