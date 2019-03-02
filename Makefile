@@ -47,7 +47,9 @@ SRC	=	window.c	\
 		event.c		\
 		math.c
 
-SRC_LIB	=	my string stdio csfml-graphics csfml-system m
+SRC_LIB	=	my string stdio \
+			csfml-graphics csfml-system \
+			m
 
 LIB_PATHS	=	lib/my lib/string lib/stdio
 
