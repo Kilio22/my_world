@@ -18,5 +18,5 @@ void create_window(princi_t *princi)
     princi->window = sfRenderWindow_create(video_mode,
     "My_world", sfDefaultStyle, NULL);
     sfRenderWindow_setFramerateLimit(princi->window, 60);
-    //sfRenderWindow_setMouseCursorVisible(princi->window, 0);
+    // sfRenderWindow_setMouseCursorVisible(princi->window, 0);
 }

@@ -31,4 +31,3 @@ princi->event.key.code >= sfKeyLeft && princi->event.key.code <= sfKeyDown)
     }
     return (0);
 }
-
