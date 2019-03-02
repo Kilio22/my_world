@@ -42,9 +42,12 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	window.c
+SRC	=	window.c	\
+		draw.c		\
+		event.c		\
+		math.c
 
-SRC_LIB	=	my string stdio csfml-graphics csfml-system
+SRC_LIB	=	my string stdio csfml-graphics csfml-system m
 
 LIB_PATHS	=	lib/my lib/string lib/stdio
 
