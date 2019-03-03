@@ -33,42 +33,44 @@ sfVertexArray *create_line(sfVector2f *p1, sfVector2f *p2)
     return (vertex_array);
 }
 
-int draw_2d_map(princi_t *princi, sfVector2f **points)
+int draw_2d_map(sfRenderWindow *window, map_t *map)
 {
     sfVertexArray *vertex_array;
+    sfVector2f **points = map->points;
 
-    for (int i = 0; i < MAP_Y; i++) {
-        for (int j = 0; j < MAP_X; j++) {
-            if (j + 1 < MAP_X)
+    for (size_t i = 0; i < map->props.rows; i++) {
+        for (size_t j = 0; j < map->props.columns; j++) {
+            if (j + 1 < map->props.columns)
                 vertex_array = create_line(&points[i][j], &points[i][j + 1]);
-            sfRenderWindow_drawVertexArray(princi->window, vertex_array, NULL);
-            if (i + 1 < MAP_Y)
+            sfRenderWindow_drawVertexArray(window, vertex_array, NULL);
+            if (i + 1 < map->props.rows)
                 vertex_array = create_line(&points[i][j], &points[i + 1][j]);
-            sfRenderWindow_drawVertexArray(princi->window, vertex_array, NULL);
+            sfRenderWindow_drawVertexArray(window, vertex_array, NULL);
         }
     }
     return (0);
 }
 
-void manage_triangles(princi_t *princi, int i, int j, sfVector2f **points)
+void manage_triangles(sfRenderWindow *window, map_t *map, size_t i, size_t j)
 {
     sfVertexArray *vertex_array;
+    sfVector2f **points = map->points;
 
-    if (i + 1 < MAP_Y && j + 1 < MAP_X) {
+    if (i + 1 < map->props.rows && j + 1 < map->props.columns) {
         vertex_array =
 create_triangle(&points[i][j], &points[i][j + 1], &points[i + 1][j]);
-        sfRenderWindow_drawVertexArray(princi->window, vertex_array, NULL);
+        sfRenderWindow_drawVertexArray(window, vertex_array, NULL);
         vertex_array =
 create_triangle(&points[i + 1][j + 1], &points[i][j + 1], &points[i + 1][j]);
-        sfRenderWindow_drawVertexArray(princi->window, vertex_array, NULL);
+        sfRenderWindow_drawVertexArray(window, vertex_array, NULL);
     }
 }
 
-int draw_triangle(princi_t *princi, sfVector2f **points)
+int draw_triangle(sfRenderWindow *window, map_t *map)
 {
-    for (int i = 0; i < MAP_Y; i++) {
-        for (int j = 0; j < MAP_X; j++) {
-            manage_triangles(princi, i, j, points);
+    for (size_t i = 0; i < map->props.rows; i++) {
+        for (size_t j = 0; j < map->props.columns; j++) {
+            manage_triangles(window, map, i, j);
         }
     }
     return (0);

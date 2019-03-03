@@ -42,10 +42,15 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	window.c	\
-		draw.c		\
-		event.c		\
-		math.c
+SRC	=	3d_projection.c \
+		create_map.c \
+		create_window.c \
+		destroy_map.c \
+		display_map.c \
+		draw.c \
+		editor_loop.c \
+		events.c \
+		global_constants.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \
