@@ -11,7 +11,8 @@ sfVertexArray *create_triangle_se(sfVector2f **points, int i,
 int j, sfColor **colors)
 {
     sfVertexArray *vertex_array = sfVertexArray_create();
-    sfVertex v1 = {.position = points[i + 1][j + 1], .color = colors[i + 1][j + 1]};
+    sfVertex v1 =
+{.position = points[i + 1][j + 1], .color = colors[i + 1][j + 1]};
     sfVertex v2 = {.position = points[i][j + 1], .color = colors[i][j + 1]};
     sfVertex v3 = {.position = points[i + 1][j], .color = colors[i + 1][j]};
 
@@ -27,8 +28,10 @@ int i, int j, sfColor **colors)
 {
     sfVertexArray *vertex_array = sfVertexArray_create();
     sfVertex vertex1 = {.position = points[i][j], .color = colors[i][j]};
-    sfVertex vertex2 = {.position = points[i][j + 1], .color = colors[i][j + 1]};
-    sfVertex vertex3 = {.position = points[i + 1][j], .color = colors[i + 1][j]};
+    sfVertex vertex2 = {.position =
+points[i][j + 1], .color = colors[i][j + 1]};
+    sfVertex vertex3 = {.position =
+points[i + 1][j], .color = colors[i + 1][j]};
 
     sfVertexArray_append(vertex_array, vertex1);
     sfVertexArray_append(vertex_array, vertex2);
