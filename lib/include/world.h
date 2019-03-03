@@ -24,8 +24,8 @@
 #define STEP_WINDOW 64
 
 struct map_props_s {
-    size_t columns;
-    size_t rows;
+    int columns;
+    int rows;
     unsigned int step;
     sfVector2f offset;
 };
@@ -34,6 +34,7 @@ typedef struct map_s {
     char *name;
     int **grid;
     sfVector2f **points;
+    sfColor **colors;
     struct map_props_s props;
 } map_t;
 

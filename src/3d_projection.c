@@ -21,9 +21,9 @@ sfVector2f **create_2d_map(map_t *map)
     sfVector2f **my_points;
 
     my_points = malloc(sizeof(sfVector2f *) * map->props.rows);
-    for (size_t i = 0; i < map->props.rows; i++) {
+    for (int i = 0; i < map->props.rows; i++) {
         my_points[i] = malloc(sizeof(sfVector2f) * map->props.columns);
-        for (size_t j = 0; j < map->props.columns; j++)
+        for (int j = 0; j < map->props.columns; j++)
             my_points[i][j] = project_iso_point(j * STEP_WINDOW,
 i * STEP_WINDOW, map->grid[i][j], map->props.offset);
     }
