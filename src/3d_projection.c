@@ -7,25 +7,12 @@
 
 #include "world.h"
 
-sfVector2f project_iso_point(int x, int y, int z, sfVector2f offset)
+sfVector2f project_iso_point(sfVector3f point, sfVector2f offset)
 {
-    sfVector2f my_2d_point = {0, 0};
+    sfVector2f point_2d = {0, 0};
 
-    my_2d_point.x = offset.x + cos(ANGLE_X) * x - cos(ANGLE_X) * y;
-    my_2d_point.y = offset.y + sin(ANGLE_Y) * x + sin(ANGLE_Y) * y - z;
-    return (my_2d_point);
-}
-
-sfVector2f **create_2d_map(map_t *map)
-{
-    sfVector2f **my_points;
-
-    my_points = malloc(sizeof(sfVector2f *) * map->props.rows);
-    for (int i = 0; i < map->props.rows; i++) {
-        my_points[i] = malloc(sizeof(sfVector2f) * map->props.columns);
-        for (int j = 0; j < map->props.columns; j++)
-            my_points[i][j] = project_iso_point(j * STEP_WINDOW,
-i * STEP_WINDOW, map->grid[i][j], map->props.offset);
-    }
-    return (my_points);
+    point_2d.x = offset.x + cos(ANGLE_X) * point.x - cos(ANGLE_X) * point.y;
+    point_2d.y = offset.y + sin(ANGLE_Y) * point.x + sin(ANGLE_Y) * point.y;
+    point_2d.y -= point.z;
+    return (point_2d);
 }

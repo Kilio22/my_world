@@ -7,8 +7,6 @@
 
 #include "world.h"
 
-/* il manque des trucs à free lol */
-
 void destroy_map(map_t *map)
 {
     free(map);

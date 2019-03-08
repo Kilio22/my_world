@@ -50,7 +50,8 @@ SRC	=	3d_projection.c \
 		draw.c \
 		editor_loop.c \
 		events.c \
-		global_constants.c
+		global_constants.c \
+		update_points.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \

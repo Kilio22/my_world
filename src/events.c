@@ -10,14 +10,14 @@
 void manage_arrows(sfEvent event, map_t *map)
 {
     if (event.key.code == sfKeyLeft)
-        map->props.offset.x -= 5;
+        map->offset.x -= 5;
     if (event.key.code == sfKeyRight)
-        map->props.offset.x += 5;
+        map->offset.x += 5;
     if (event.key.code == sfKeyDown)
-        map->props.offset.y += 5;
+        map->offset.y += 5;
     if (event.key.code == sfKeyUp)
-        map->props.offset.y -= 5;
-    map->points = create_2d_map(map);
+        map->offset.y -= 5;
+    update_points(map);
 }
 
 int analyse_events(sfRenderWindow *window, map_t *map)

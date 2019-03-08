@@ -7,28 +7,20 @@
 
 #include "world.h"
 
-sfColor **create_color_tab(int rows, int columns)
+static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
 {
-    sfColor **colors = malloc(sizeof(sfColor *) * rows);
-
-    for (int i = 0; i < rows; i++) {
-        colors[i] = malloc(sizeof(sfColor) * columns);
-        for (int j = 0; j < columns; j++)
-            colors[i][j] = sfRed;
-    }
-    return (colors);
-}
-
-static int **create_blank_grid(int x, int y)
-{
-    int **map = malloc(sizeof(int *) * y);
+    grid_point_t **grid = malloc(sizeof(grid_point_t *) * y);
+    sfVector3f point;
 
     for (int i = 0; i < y; i++) {
-        map[i] = malloc(sizeof(int) * x);
-        for (int j = 0; j < x; j++)
-            map[i][j] = 00;
+        grid[i] = malloc(sizeof(grid_point_t) * x);
+        for (int j = 0; j < x; j++) {
+            point = (sfVector3f){j * step, i * step, 0};
+            (grid[i][j]).altitude = 0;
+            (grid[i][j]).point = project_iso_point(point, offset);
+        }
     }
-    return (map);
+    return (grid);
 }
 
 map_t *create_map(char *filepath)
@@ -36,12 +28,10 @@ map_t *create_map(char *filepath)
     map_t *map = malloc(sizeof(map_t));
 
     map->name = filepath;
-    map->grid = create_blank_grid(INIT_MAP_X, INIT_MAP_Y);
-    map->props.columns = INIT_MAP_X;
-    map->props.rows = INIT_MAP_Y;
-    map->props.step = STEP_WINDOW;
-    map->props.offset = (sfVector2f){INIT_MAP_OFFSET, INIT_MAP_OFFSET};
-    map->points = create_2d_map(map);
-    map->colors = create_color_tab(map->props.rows, map->props.columns);
+    map->columns = start_x;
+    map->rows = start_y;
+    map->step = start_step;
+    map->offset = start_offset;
+    map->grid = create_grid(start_x, start_y, start_step, start_offset);
     return (map);
 }

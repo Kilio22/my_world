@@ -16,7 +16,6 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height,
 
     window = sfRenderWindow_create(video_mode, name, sfDefaultStyle, NULL);
     sfRenderWindow_setFramerateLimit(window, fps);
-    /* pour éviter le lag du début du programe, je fais pop instant la fenêtre */
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_display(window);
     return (window);

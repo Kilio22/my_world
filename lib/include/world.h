@@ -16,26 +16,28 @@
 #include <math.h>
 
 #define IN_RADIANS(angle) (angle * M_PI / 180)
+
 #define ANGLE_X 0.785398
 #define ANGLE_Y 0.610865
-#define INIT_MAP_X 6
-#define INIT_MAP_Y 6
-#define INIT_MAP_OFFSET 300
-#define STEP_WINDOW 64
 
-struct map_props_s {
+extern const int start_x;
+extern const int start_y;
+extern const int start_step;
+extern const sfColor start_color;
+extern const sfVector2f start_offset;
+
+typedef struct grid_point_s {
+    int altitude;
+    sfVector2f point;
+} grid_point_t;
+
+typedef struct map_s {
+    char *name;
     int columns;
     int rows;
     unsigned int step;
     sfVector2f offset;
-};
-
-typedef struct map_s {
-    char *name;
-    int **grid;
-    sfVector2f **points;
-    sfColor **colors;
-    struct map_props_s props;
+    grid_point_t **grid;
 } map_t;
 
 /* Read note in create_window.c */
@@ -43,11 +45,13 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height,
                               unsigned int fps, char *name);
 
 void destroy_map(map_t *map);
+void update_points(map_t *map);
 map_t *create_map(char *filepath);
 sfVector2f **create_2d_map(map_t *map);
 int loop_editor(sfRenderWindow *window, map_t *map);
 int draw_2d_map(sfRenderWindow *window, map_t *map);
 int draw_triangle(sfRenderWindow *window, map_t *map);
 int analyse_events(sfRenderWindow *window, map_t *map);
+sfVector2f project_iso_point(sfVector3f point, sfVector2f offset);
 
 #endif
