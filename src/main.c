@@ -9,7 +9,7 @@
 
 int main(void)
 {
-    sfRenderWindow *window = create_window(1920, 1080, 60, "World editer");
+    sfRenderWindow *window = create_window(1920, 1080, 60, "World editor");
     map_t *map = create_map(NULL);
 
     loop_editor(window, map);

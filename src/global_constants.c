@@ -7,9 +7,9 @@
 
 #include "world.h"
 
-const int start_x = 6;
-const int start_y = 6;
+const int start_x = 10;
+const int start_y = 10;
 const int start_step = 64;
 /* sfGreen doesn't work */
 const sfColor start_color = {0, 255, 0, 255};
-const sfVector2f start_offset = {300.0, 300.0};
+const sfVector2f start_offset = {800.0, 200.0};

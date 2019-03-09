@@ -1,2 +1,6 @@
 faire gaffe au urandom quand on donne un fichier à load
     -> prendre uniquement les .world ?
+pour les textures :
+    sfRenderStates lol;
+    lol.texture = ...
+    remplacer le null au moment du draw par 'lol';

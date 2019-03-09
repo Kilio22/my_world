@@ -46,12 +46,18 @@ SRC	=	3d_projection.c \
 		create_map.c \
 		create_window.c \
 		destroy_map.c \
-		display_map.c \
-		draw.c \
+		draw_tiles.c \
+		draw_lines.c	\
 		editor_loop.c \
 		events.c \
 		global_constants.c \
-		update_points.c
+		update_points.c	\
+		view.c	\
+		keyboard.c	\
+		mouse_interaction.c	\
+		maths.c	\
+		dig_up.c	\
+		mouse.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \
@@ -64,7 +70,7 @@ OBJ	=	$(SRCS:.c=.o)
 LIBRARIES	=	$(SRC_LIB:%=-l%)
 LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
-CFLAGS	=	-Wall -Wextra -Werror -I $(INCL_PATH)
+CFLAGS	=	-Wall -Wextra -I $(INCL_PATH)
 LDFLAGS	=	$(LIB_PATHS_FLAG) $(LIBRARIES)
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 

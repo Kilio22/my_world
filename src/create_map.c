@@ -26,12 +26,16 @@ static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
 map_t *create_map(char *filepath)
 {
     map_t *map = malloc(sizeof(map_t));
+    sfVector2f view_vec = {1920, 1080};
 
     map->name = filepath;
     map->columns = start_x;
     map->rows = start_y;
     map->step = start_step;
     map->offset = start_offset;
+    map->mode = tile;
     map->grid = create_grid(start_x, start_y, start_step, start_offset);
+    map->view = sfView_create();
+    sfView_setSize(map->view, view_vec);
     return (map);
 }

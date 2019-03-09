@@ -8,16 +8,19 @@
 #include "world.h"
 
 int loop_editor(sfRenderWindow *window, map_t *map)
-{ 
+{
+    sfEvent event;
+
     while (sfRenderWindow_isOpen(window)) {
-        if (analyse_events(window, map) == 1)
-            break;
-        draw_triangle(window, map);
+        while (sfRenderWindow_pollEvent(window, &event))
+            analyse_events(window, map, event);
+        manage_mouse(map, window);
+        sfRenderWindow_setView(window, map->view);
+        draw_tiles(window, map);
         draw_2d_map(window, map);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
     }
-    sfRenderWindow_close(window);
     sfRenderWindow_destroy(window);
     return (0);
 }
