@@ -25,6 +25,7 @@ extern const int start_y;
 extern const int start_step;
 extern const sfColor start_color;
 extern const sfVector2f start_offset;
+extern const char *input_font_path;
 
 typedef enum mode_e {
     corner,
@@ -58,6 +59,7 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height,
                               unsigned int fps, char *name);
 
 void destroy_map(map_t *map);
+char *prompt_user_input(void);
 void update_points(map_t *map);
 map_t *create_map(char *filepath);
 sfVector2f **create_2d_map(map_t *map);

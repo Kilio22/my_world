@@ -13,3 +13,4 @@ const int start_step = 64;
 /* sfGreen doesn't work */
 const sfColor start_color = {0, 255, 0, 255};
 const sfVector2f start_offset = {800.0, 200.0};
+const char *input_font_path = "assets/pixelmix.ttf";

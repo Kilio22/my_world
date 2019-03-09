@@ -42,7 +42,10 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	3d_projection.c \
+SRC	=	text_prompt/prompt_user_input.c \
+		text_prompt/update_input.c \
+		text_prompt/verify_input.c \
+		3d_projection.c \
 		create_map.c \
 		create_window.c \
 		destroy_map.c \
