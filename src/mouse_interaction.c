@@ -9,7 +9,7 @@
 #include <math.h>
 #include "world.h"
 
-sfVector2f compare_points(sfVector2f p1, sfVector2f p2, sfVector2f old)
+static sfVector2f compare_points(sfVector2f p1, sfVector2f p2, sfVector2f old)
 {
     if (distance_between_points(p1, p2) < distance_between_points(p1, old))
         return (p2);
@@ -33,7 +33,8 @@ int find_corner_color(sfRenderWindow *win, map_t *map, sfVector2f point)
     return (0);
 }
 
-bool verif_tile(sfVector2f p, sfVector2f p1, sfVector2f p2, sfVector2f p3)
+static bool verif_tile(sfVector2f p, sfVector2f p1,
+                       sfVector2f p2, sfVector2f p3)
 {
     float v1 = 0.0;
     float v2 = 0.0;

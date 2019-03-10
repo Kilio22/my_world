@@ -49,17 +49,21 @@ SRC	=	text_prompt/prompt_user_input.c \
 		create_map.c \
 		create_window.c \
 		destroy_map.c \
+		dig_down.c \
+		dig_up.c \
+		draw_lines.c \
+		draw_square.c \
 		draw_tiles.c \
-		draw_lines.c	\
 		editor_loop.c \
 		events.c \
 		global_constants.c \
 		update_points.c	\
 		view.c	\
-		keyboard.c	\
+		highlight_corner.c \
+		highlight_square.c \
+		keyboard.c\
 		mouse_interaction.c	\
 		maths.c	\
-		dig_up.c	\
 		mouse.c
 
 SRC_LIB	=	my string stdio \

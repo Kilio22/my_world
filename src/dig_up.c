@@ -7,13 +7,13 @@
 
 #include "world.h"
 
-void dig_up_corner2(map_t *map, int i, int j)
+static void dig_up_corner2(map_t *map, int i, int j)
 {
     map->grid[i][j].altitude += 1;
     update_points(map);
 }
 
-void dig_up_corner(map_t *map, sfRenderWindow *win)
+void dig_up_corner(sfRenderWindow *win, map_t *map)
 {
     int check = 0;
 
@@ -25,7 +25,7 @@ void dig_up_corner(map_t *map, sfRenderWindow *win)
     }
 }
 
-void dig_up_tiles2(map_t *map, int i, int j)
+static void dig_up_tiles2(map_t *map, int i, int j)
 {
     map->grid[i][j].altitude += 1;
     map->grid[i][j + 1].altitude += 1;
@@ -34,7 +34,7 @@ void dig_up_tiles2(map_t *map, int i, int j)
     update_points(map);
 }
 
-void dig_up_tiles(map_t *map, sfRenderWindow *win)
+void dig_up_square(sfRenderWindow *win, map_t *map)
 {
     int check = 0;
 
@@ -44,12 +44,4 @@ void dig_up_tiles(map_t *map, sfRenderWindow *win)
             check == 1 ? dig_up_tiles2(map, i, j) : 0;
         }
     }
-}
-
-void manage_dig_up(map_t *map, sfRenderWindow *win)
-{
-    if (map->mode == tile)
-        dig_up_tiles(map, win);
-    if (map->mode == corner)
-        dig_up_corner(map, win);
 }

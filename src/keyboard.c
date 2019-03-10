@@ -9,29 +9,36 @@
 
 void change_mode(map_t *map)
 {
-    if (map->mode == tile)
+    if (map->mode == square) {
         map->mode = corner;
-    else
-        map->mode = tile;
+        map->highlight = highlight_corner;
+        map->action = dig_up_corner;
+    } else {
+        map->mode = square;
+        map->highlight = highlight_square;
+        map->action = dig_up_square;
+    }
 }
 
-void manage_arrows(sfEvent event, map_t *map)
+void manage_arrows(sfKeyCode key, map_t *map)
 {
-    if (event.key.code == sfKeyLeft)
+    if (key == sfKeyLeft)
         map->offset.x += 5;
-    if (event.key.code == sfKeyRight)
+    if (key == sfKeyRight)
         map->offset.x -= 5;
-    if (event.key.code == sfKeyDown)
+    if (key == sfKeyDown)
         map->offset.y -= 5;
-    if (event.key.code == sfKeyUp)
+    if (key == sfKeyUp)
         map->offset.y += 5;
     update_points(map);
 }
 
-void analyse_key_pressed(sfEvent event, map_t *map)
+void analyse_key_pressed(sfKeyCode key, map_t *map)
 {
-    if (event.key.code >= sfKeyLeft && event.key.code <= sfKeyDown)
-        manage_arrows(event, map);
-    if (event.key.code == sfKeyS)
+    if (key == sfKeySpace)
+        reset_view(map);
+    if (key >= sfKeyLeft && key <= sfKeyDown)
+        manage_arrows(key, map);
+    if (key == sfKeyS)
         change_mode(map);
 }

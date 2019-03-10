@@ -33,9 +33,11 @@ map_t *create_map(char *filepath)
     map->rows = start_y;
     map->step = start_step;
     map->offset = start_offset;
-    map->mode = tile;
     map->grid = create_grid(start_x, start_y, start_step, start_offset);
     map->view = sfView_create();
     sfView_setSize(map->view, view_vec);
+    map->highlight = highlight_square;
+    map->action = dig_up_square;
+    map->mode = square;
     return (map);
 }

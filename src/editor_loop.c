@@ -17,7 +17,7 @@ int loop_editor(sfRenderWindow *window, map_t *map)
         manage_mouse(map, window);
         sfRenderWindow_setView(window, map->view);
         draw_tiles(window, map);
-        draw_2d_map(window, map);
+        map->highlight(window, map);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
     }

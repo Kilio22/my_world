@@ -24,7 +24,7 @@ void manage_mouse(map_t *map, sfRenderWindow *win)
         case -1:
             return;
         case 1:
-            return (manage_dig_up(map, win));
+            return (map->action(win, map));
         case 2:
             break;
         default:

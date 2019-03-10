@@ -12,9 +12,7 @@ void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event)
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(window);
     if (event.type == sfEvtKeyPressed)
-        analyse_key_pressed(event, map);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
-        reset_view(map);
+        analyse_key_pressed(event.key.code, map);
     if (event.type == sfEvtMouseWheelMoved)
         manage_zoom(window, map, event);
     if (event.type == sfEvtMouseButtonPressed) {
