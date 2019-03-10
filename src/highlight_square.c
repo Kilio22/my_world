@@ -13,8 +13,8 @@ static int highlight_on_cursor(sfRenderWindow *win, map_t *map, int i)
         if (is_on_tile(win, map, &map->grid[i], j) == 1) {
             draw_square(win, &map->grid[i], j, sfWhite);
             draw_lines(win, map, i, j);
-            draw_lines(win, map, i + 1, j); // dans certains cas c'est pas ouf
-            draw_lines(win, map, i, j + 1); // dans certains cas c'est pas ouf
+            draw_lines(win, map, i + 1, j);
+            draw_lines(win, map, i, j + 1);
             return (1);
         }
     }

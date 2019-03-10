@@ -7,6 +7,11 @@
 
 #include "world.h"
 
+void resize_window(map_t *map, sfSizeEvent size)
+{
+    sfView_setSize(map->view, (sfVector2f){size.width, size.height});
+}
+
 void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event)
 {
     if (event.type == sfEvtClosed)
@@ -21,6 +26,8 @@ void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event)
         else if (event.mouseButton.button == sfMouseRight)
             transfer_mouse_press(2);
     }
+    if (event.type == sfEvtResized)
+        resize_window(map, event.size);
     if (event.type == sfEvtMouseButtonReleased)
         transfer_mouse_press(0);
 }

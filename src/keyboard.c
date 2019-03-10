@@ -25,13 +25,13 @@ void change_mode(map_t *map)
 void manage_arrows(sfKeyCode key, map_t *map)
 {
     if (key == sfKeyLeft)
-        map->offset.x += 5;
+        map->offset.x += 15;
     if (key == sfKeyRight)
-        map->offset.x -= 5;
+        map->offset.x -= 15;
     if (key == sfKeyDown)
-        map->offset.y -= 5;
+        map->offset.y -= 15;
     if (key == sfKeyUp)
-        map->offset.y += 5;
+        map->offset.y += 15;
     update_points(map);
 }
 
