@@ -38,6 +38,7 @@ map_t *create_map(char *filepath)
     sfView_setSize(map->view, view_vec);
     map->highlight = highlight_square;
     map->action = dig_up_square;
+    map->erase = dig_down_square;
     map->mode = square;
     return (map);
 }

@@ -26,7 +26,7 @@ void manage_mouse(map_t *map, sfRenderWindow *win)
         case 1:
             return (map->action(win, map));
         case 2:
-            break;
+            return (map->erase(win, map));
         default:
             break;
     }

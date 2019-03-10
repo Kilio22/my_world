@@ -13,10 +13,12 @@ void change_mode(map_t *map)
         map->mode = corner;
         map->highlight = highlight_corner;
         map->action = dig_up_corner;
+        map->erase = dig_down_corner;
     } else {
         map->mode = square;
         map->highlight = highlight_square;
         map->action = dig_up_square;
+        map->erase = dig_down_square;
     }
 }
 

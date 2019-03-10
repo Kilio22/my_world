@@ -94,5 +94,7 @@ void highlight_corner(sfRenderWindow *win, map_t *map);
 /* ACTIONS */
 void dig_up_square(sfRenderWindow *win, map_t *map);
 void dig_up_corner(sfRenderWindow *win, map_t *map);
+void dig_down_square(sfRenderWindow *win, map_t *map);
+void dig_down_corner(sfRenderWindow *win, map_t *map);
 
 #endif
