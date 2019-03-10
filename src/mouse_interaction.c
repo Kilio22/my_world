@@ -9,6 +9,17 @@
 #include <math.h>
 #include "world.h"
 
+void update_cursor_position(map_t *map, sfRenderWindow *win, sfSprite *sprite)
+{
+    sfVector2i m = sfMouse_getPositionRenderWindow(win);
+    sfVector2f mouse = sfRenderWindow_mapPixelToCoords(win, m, map->view);
+
+    mouse.x -= 3;
+    mouse.y -= 3.5;
+    sfSprite_setPosition(sprite, mouse);
+    sfRenderWindow_drawSprite(win, sprite, NULL);
+}
+
 static sfVector2f compare_points(sfVector2f p1, sfVector2f p2, sfVector2f old)
 {
     if (distance_between_points(p1, p2) < distance_between_points(p1, old))

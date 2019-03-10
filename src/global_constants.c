@@ -14,3 +14,4 @@ const int start_step = 64;
 const sfColor start_color = {0, 255, 0, 255};
 const sfVector2f start_offset = {500.0, 200.0};
 const char *input_font_path = "assets/pixelmix.ttf";
+const char *cursor_path = "assets/main_cursor.png";

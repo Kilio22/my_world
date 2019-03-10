@@ -27,6 +27,7 @@ extern const int start_step;
 extern const sfColor start_color;
 extern const sfVector2f start_offset;
 extern const char *input_font_path;
+extern const char *cursor_path;
 
 typedef enum mode_e {
     corner,
@@ -64,6 +65,7 @@ void update_points(map_t *map);
 map_t *create_map(char *filepath);
 sfVector2f **create_2d_map(map_t *map);
 int loop_editor(sfRenderWindow *window, map_t *map);
+sfSprite *load_cursor(void);
 // int draw_2d_map(sfRenderWindow *window, map_t *map);
 // int draw_tiles(sfRenderWindow *window, map_t *map);
 void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event);
@@ -86,6 +88,7 @@ int draw_tiles(sfRenderWindow *win, map_t *map);
 void draw_lines(sfRenderWindow *win, map_t *map, int i, int j);
 int draw_line_corner(sfRenderWindow *win, map_t *map, int i, int j);
 void draw_square(sfRenderWindow *win, grid_point_t **point, int j, sfColor);
+void update_cursor_position(map_t *map, sfRenderWindow *win, sfSprite *sprite);
 
 /* HIGHLIGHT */
 void highlight_square(sfRenderWindow *win, map_t *map);
