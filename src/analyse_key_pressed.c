@@ -7,7 +7,7 @@
 
 #include "world.h"
 
-void change_mode(map_t *map)
+static void change_mode(map_t *map)
 {
     if (map->mode == square) {
         map->mode = corner;
@@ -22,7 +22,7 @@ void change_mode(map_t *map)
     }
 }
 
-void manage_arrows(sfKeyCode key, map_t *map)
+static void manage_arrows(sfKeyCode key, map_t *map)
 {
     if (key == sfKeyLeft)
         map->offset.x += 15;

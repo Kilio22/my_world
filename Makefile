@@ -46,6 +46,8 @@ SRC	=	text_prompt/prompt_user_input.c \
 		text_prompt/update_input.c \
 		text_prompt/verify_input.c \
 		3d_projection.c \
+		analyse_events.c \
+		analyse_key_pressed.c \
 		create_map.c \
 		create_window.c \
 		destroy_map.c \
@@ -55,16 +57,14 @@ SRC	=	text_prompt/prompt_user_input.c \
 		draw_square.c \
 		draw_tiles.c \
 		editor_loop.c \
-		events.c \
 		global_constants.c \
-		update_points.c	\
-		view.c	\
 		highlight_corner.c \
+		highlight_math.c \
 		highlight_square.c \
-		keyboard.c\
-		mouse_interaction.c	\
+		manage_view.c \
 		maths.c	\
-		mouse.c
+		mouse.c \
+		update_points.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \
