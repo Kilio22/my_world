@@ -7,15 +7,15 @@
 
 #include "world.h"
 
-void reset_view(map_t *map)
+void reset_view(sfRenderWindow *win, map_t *map)
 {
-    sfVector2f view_vec = {1920, 1080};
+    sfVector2u size = sfRenderWindow_getSize(win);
 
     map->offset = start_offset;
     sfView_destroy(map->view);
     map->view = sfView_create();
     update_points(map);
-    sfView_setSize(map->view, view_vec);
+    sfView_setSize(map->view, (sfVector2f){size.x, size.y});
 }
 
 void manage_zoom_at(sfVector2i m, map_t *map, float zoom, sfRenderWindow *win)

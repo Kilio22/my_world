@@ -16,7 +16,7 @@ static sfVector2f compare_points(sfVector2f p1, sfVector2f p2, sfVector2f old)
     return (old);
 }
 
-int find_corner_color(sfRenderWindow *win, map_t *map, sfVector2f point)
+int is_closest_corner(sfRenderWindow *win, map_t *map, sfVector2f point)
 {
     sfVector2i m = sfMouse_getPositionRenderWindow(win);
     sfVector2f mouse = sfRenderWindow_mapPixelToCoords(win, m, map->view);

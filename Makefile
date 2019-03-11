@@ -46,6 +46,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		text_prompt/update_input.c \
 		text_prompt/verify_input.c \
 		3d_projection.c \
+		analyse_click.c \
 		analyse_events.c \
 		analyse_key_pressed.c \
 		create_map.c \
@@ -53,6 +54,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		destroy_map.c \
 		dig_down.c \
 		dig_up.c \
+		dig_what.c \
 		draw_lines.c \
 		draw_square.c \
 		draw_tiles.c \

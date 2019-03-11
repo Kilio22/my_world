@@ -35,10 +35,10 @@ static void manage_arrows(sfKeyCode key, map_t *map)
     update_points(map);
 }
 
-void analyse_key_pressed(sfKeyCode key, map_t *map)
+void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key)
 {
     if (key == sfKeySpace)
-        reset_view(map);
+        reset_view(win, map);
     if (key >= sfKeyLeft && key <= sfKeyDown)
         manage_arrows(key, map);
     if (key == sfKeyS)

@@ -10,8 +10,8 @@
 static sfVertexArray *create_line_corner(sfVector2f p1, sfVector2f p2,
                                          sfRenderWindow *win, map_t *map)
 {
-    int i = find_corner_color(win, map, p1);
-    int j = find_corner_color(win, map, p2);
+    int i = is_closest_corner(win, map, p1);
+    int j = is_closest_corner(win, map, p2);
     sfVertexArray *vertex_array;
     sfVertex vertex = {.position = p1, .color = sfWhite};
 
@@ -81,4 +81,17 @@ void draw_lines(sfRenderWindow *win, map_t *map, int i, int j)
         v_array = create_line(points, color);
         sfRenderWindow_drawVertexArray(win, v_array, NULL);
     }
+}
+
+sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2)
+{
+    sfVertexArray *v_array = sfVertexArray_create();
+    sfVertex vertex = {.position = pos1, .color = sfBlack};
+
+    sfVertexArray_append(v_array, vertex);
+    vertex.position = pos2;
+    vertex.color = sfWhite;
+    sfVertexArray_append(v_array, vertex);
+    sfVertexArray_setPrimitiveType(v_array, sfLinesStrip);
+    return (v_array);
 }
