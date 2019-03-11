@@ -16,10 +16,11 @@ const sfVector2f start_offset = {500.0, 200.0};
 const char *input_font_path = "assets/pixelmix.ttf";
 const char *cursor_path = "assets/main_cursor.png";
 const sfColor toolbox_color = {189, 195, 199, 255};
-const char *icone_fp[4] = {
+const char *icone_fp[5] = {
     "assets/icone/dig_up.png",
     "assets/icone/dig_down.png",
     "assets/icone/tiles.png",
-    "assets/icone/corner.png"
+    "assets/icone/rotate.png",
+    "assets/icone/corner.png",
     };
-const sfVector2f icone_pos[4] = {{10, 10}, {80, 10}, {30, 80}};
+const sfVector2f icone_pos[4] = {{10, 10}, {80, 10}, {30, 80}, {42, 140}};

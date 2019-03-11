@@ -13,7 +13,7 @@ void display_toolbox(toolbox_t *toolbox, map_t *map)
 
     while (sfRenderWindow_pollEvent(toolbox->win, &event))
             analyse_events_win2(event, toolbox, map);
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
         sfRenderWindow_drawSprite(toolbox->win, toolbox->sprites[i], NULL);
     sfRenderWindow_display(toolbox->win);
     sfRenderWindow_clear(toolbox->win, toolbox_color);

@@ -29,7 +29,7 @@ extern const sfVector2f start_offset;
 extern const char *input_font_path;
 extern const char *cursor_path;
 extern const sfColor toolbox_color;
-extern const char *icone_fp[4];
+extern const char *icone_fp[5];
 extern const sfVector2f icone_pos[4];
 
 typedef enum mode_e {
@@ -58,6 +58,7 @@ typedef struct map_s {
     unsigned int step;
     sfVector2f offset;
     grid_point_t **grid;
+    int mode_view;
     sfView *view;
     void (*highlight)(sfRenderWindow *, struct map_s *);
     void (*action)(sfRenderWindow *, struct map_s *);

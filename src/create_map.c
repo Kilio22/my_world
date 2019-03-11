@@ -40,5 +40,6 @@ map_t *create_map(char *filepath)
     map->action = dig_up_square;
     map->erase = dig_down_square;
     map->mode = square;
+    map->mode_view = 0;
     return (map);
 }

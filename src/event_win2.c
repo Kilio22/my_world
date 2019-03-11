@@ -9,7 +9,7 @@
 
 void update_button(toolbox_t *toolbox)
 {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 4; i++)
         if (toolbox->state[i] == 1) {
             sfSprite_setColor(toolbox->sprites[i], sfRed);
             toolbox->state[i] = 2;
