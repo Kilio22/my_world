@@ -12,10 +12,10 @@ toolbox_t *create_toolbox(void)
     toolbox_t *toolbox = malloc(sizeof(toolbox_t));
     sfVector2i pos2 = {1450, 0};
 
-    toolbox->sprites = malloc(sizeof(sfSprite *) * 4);
-    toolbox->textures = malloc(sizeof(sfTexture *) * 4);
-    toolbox->state = malloc(sizeof(int) * 4);
-    for (int i = 0; i < 4; i++) {
+    toolbox->sprites = malloc(sizeof(sfSprite *) * 6);
+    toolbox->textures = malloc(sizeof(sfTexture *) * 6);
+    toolbox->state = malloc(sizeof(int) * 6);
+    for (int i = 0; i < 6; i++) {
         toolbox->textures[i] = sfTexture_createFromFile(icone_fp[i], NULL);
         toolbox->sprites[i] = sfSprite_create();
         sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);

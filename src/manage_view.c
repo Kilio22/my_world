@@ -7,6 +7,17 @@
 
 #include "world.h"
 
+void check_zoom(toolbox_t *tool, sfRenderWindow *win1, map_t *map)
+{
+    sfVector2u vect = sfRenderWindow_getSize(win1);
+    sfVector2i real_vect = {vect.x / 2, vect.y / 2};
+
+    if (tool->state[4] == 1)
+        manage_zoom_at(real_vect, map, 0.9, win1);
+    if (tool->state[5] == 1)
+        manage_zoom_at(real_vect, map, 1.1, win1);
+}
+
 void reset_view(sfRenderWindow *win, map_t *map)
 {
     sfVector2u size = sfRenderWindow_getSize(win);

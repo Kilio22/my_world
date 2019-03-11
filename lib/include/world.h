@@ -20,6 +20,7 @@
 
 #define ANGLE_X 0.785398
 #define ANGLE_Y 0.610865
+#define NB_BUTTON 5
 
 extern const int start_x;
 extern const int start_y;
@@ -29,8 +30,8 @@ extern const sfVector2f start_offset;
 extern const char *input_font_path;
 extern const char *cursor_path;
 extern const sfColor toolbox_color;
-extern const char *icone_fp[5];
-extern const sfVector2f icone_pos[4];
+extern const char *icone_fp[7];
+extern const sfVector2f icone_pos[6];
 
 typedef enum mode_e {
     corner,
@@ -85,6 +86,7 @@ void analyse_events_win2(sfEvent event, toolbox_t *tool, map_t *map);
 void is_on_button(toolbox_t *toolbox, sfVector2f mouse, map_t *map);
 void change_sprite(toolbox_t *toolbox, int i, map_t *map);
 void change_mode(map_t *map);
+void check_zoom(toolbox_t *tool, sfRenderWindow *win1, map_t *map);
 
 /* EVENTS */
 void reset_view(sfRenderWindow *win, map_t *map);

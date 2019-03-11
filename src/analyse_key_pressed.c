@@ -51,6 +51,8 @@ static void manage_arrows(sfKeyCode key, map_t *map)
 void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key,
 toolbox_t *tool)
 {
+    sfVector2i pos2 = {1450, 0};
+
     if (key == sfKeySpace)
         reset_view(win, map);
     if (key >= sfKeyLeft && key <= sfKeyDown && map->mode_view == 0)
@@ -61,4 +63,6 @@ toolbox_t *tool)
         change_sprite(tool, 2, map);
     if (key == sfKeyR)
         map->mode_view = (map->mode_view == 1 ? 0 : 1);
+    if (key == sfKeyT && !sfRenderWindow_isOpen(tool->win))
+        tool->win = create_window(150, 1080, pos2, "Tool_box");
 }

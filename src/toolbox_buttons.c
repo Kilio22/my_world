@@ -10,8 +10,8 @@
 void change_sprite(toolbox_t *toolbox, int i, map_t *map)
 {
     if (i == 2 && toolbox->state[i] == 0) {
-        toolbox->state[i] = 2;
-        toolbox->textures[i] = sfTexture_createFromFile(icone_fp[4], NULL);
+        toolbox->state[i] = 1;
+        toolbox->textures[i] = sfTexture_createFromFile(icone_fp[6], NULL);
         sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);
         sfSprite_setColor(toolbox->sprites[i], sfWhite);
         change_mode(map);
@@ -53,7 +53,7 @@ void is_on_button(toolbox_t *toolbox, sfVector2f mouse, map_t *map)
     sfFloatRect button_pos;
     sfFloatRect mouse_pos = {mouse.x, mouse.y, 1, 1};
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 6; i++) {
         button_pos = sfSprite_getGlobalBounds(toolbox->sprites[i]);
         if (sfFloatRect_intersects(&button_pos, &mouse_pos, NULL)) {
             return (check_buttons_state(toolbox, i, map));

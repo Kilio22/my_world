@@ -14,6 +14,10 @@ void update_button(toolbox_t *toolbox)
             sfSprite_setColor(toolbox->sprites[i], sfRed);
             toolbox->state[i] = 2;
         }
+    for (int i = 4; i < 6; i++) {
+        toolbox->state[i] = 0;
+        sfSprite_setColor(toolbox->sprites[i], sfWhite);
+    }
 }
 
 void analyse_events_win2(sfEvent event, toolbox_t *tool, map_t *map)
