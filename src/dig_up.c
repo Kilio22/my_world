@@ -7,7 +7,7 @@
 
 #include "world.h"
 
-static int icr_corner_altitude(sfRenderWindow *win, map_t *map, int i, int j)
+static int icr_corner_altitude(map_t *map, int i, int j)
 {
     map->grid[i][j].altitude += 1;
     update_points(map);
@@ -22,7 +22,7 @@ void dig_up_corner(sfRenderWindow *win, map_t *map)
         update_selected_point(win, map);
         index = transfer_indexes(NULL);
     }
-    icr_corner_altitude(win, map, index[0], index[1]);
+    icr_corner_altitude(map, index[0], index[1]);
 }
 
 static int icr_square_alitude(sfRenderWindow *win, map_t *map, int i, int j)
