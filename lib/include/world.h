@@ -81,6 +81,7 @@ int transfer_mouse_press(int tag);
 /* DRAW */
 int draw_tiles(sfRenderWindow *win, map_t *map);
 void draw_lines(sfRenderWindow *win, map_t *map, int i, int j);
+sfVertexArray *create_line(sfVector2f points[2], sfColor color);
 int draw_line_corner(sfRenderWindow *win, map_t *map, int i, int j);
 void draw_square(sfRenderWindow *win, grid_point_t **point, int j, sfColor);
 

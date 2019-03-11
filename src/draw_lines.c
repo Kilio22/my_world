@@ -51,7 +51,7 @@ int draw_line_corner(sfRenderWindow *win, map_t *map, int i, int j)
     return (0);
 }
 
-static sfVertexArray *create_line(sfVector2f points[2], sfColor color)
+sfVertexArray *create_line(sfVector2f points[2], sfColor color)
 {
     sfVertexArray *vertex_array = sfVertexArray_create();
     sfVertex vertex1 = {.position = points[0], .color = color};

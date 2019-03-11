@@ -9,12 +9,20 @@
 
 static int highlight_on_cursor(sfRenderWindow *win, map_t *map, int i)
 {
+    sfVertexArray *v_array;
+    sfVector2f pos[2];
+
     for (int j = map->columns - 2; j >= 0; j--) {
         if (is_on_tile(win, map, &map->grid[i], j) == 1) {
             draw_square(win, &map->grid[i], j, sfWhite);
             draw_lines(win, map, i, j);
-            draw_lines(win, map, i + 1, j);
-            draw_lines(win, map, i, j + 1);
+            pos[0] = map->grid[i + 1][j].point;
+            pos[1] = map->grid[i + 1][j + 1].point;
+            v_array = create_line(pos, sfBlack);
+            sfRenderWindow_drawVertexArray(win, v_array, NULL);
+            pos[0] = map->grid[i][j + 1].point;
+            v_array = create_line(pos, sfBlack);
+            sfRenderWindow_drawVertexArray(win, v_array, NULL);
             return (1);
         }
     }
