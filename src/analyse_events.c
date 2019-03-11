@@ -12,12 +12,13 @@ void resize_window(map_t *map, sfSizeEvent size)
     sfView_setSize(map->view, (sfVector2f){size.width, size.height});
 }
 
-void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event)
+void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event,
+toolbox_t *tool)
 {
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(window);
     if (event.type == sfEvtKeyPressed)
-        analyse_key_pressed(window, map, event.key.code);
+        analyse_key_pressed(window, map, event.key.code, tool);
     if (event.type == sfEvtMouseWheelMoved)
         manage_zoom(window, map, event);
     if (event.type == sfEvtResized)

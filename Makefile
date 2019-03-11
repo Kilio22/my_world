@@ -59,6 +59,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		draw_square.c \
 		draw_tiles.c \
 		editor_loop.c \
+		event_win2.c	\
 		global_constants.c \
 		highlight_corner.c \
 		highlight_math.c \
@@ -66,7 +67,8 @@ SRC	=	text_prompt/prompt_user_input.c \
 		manage_view.c \
 		maths.c	\
 		mouse.c \
-		update_points.c
+		update_points.c	\
+		toolbox_buttons.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \

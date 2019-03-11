@@ -7,7 +7,7 @@
 
 #include "world.h"
 
-static void change_mode(map_t *map)
+void change_mode(map_t *map)
 {
     if (map->mode == square) {
         map->mode = corner;
@@ -35,12 +35,12 @@ static void manage_arrows(sfKeyCode key, map_t *map)
     update_points(map);
 }
 
-void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key)
+void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key, toolbox_t *tool)
 {
     if (key == sfKeySpace)
         reset_view(win, map);
     if (key >= sfKeyLeft && key <= sfKeyDown)
         manage_arrows(key, map);
     if (key == sfKeyS)
-        change_mode(map);
+        change_sprite(tool, 2, map);
 }

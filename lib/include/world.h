@@ -28,6 +28,9 @@ extern const sfColor start_color;
 extern const sfVector2f start_offset;
 extern const char *input_font_path;
 extern const char *cursor_path;
+extern const sfColor toolbox_color;
+extern const char *icone_fp[4];
+extern const sfVector2f icone_pos[4];
 
 typedef enum mode_e {
     corner,
@@ -35,6 +38,13 @@ typedef enum mode_e {
     zoom,
     rotation
 } my_mode_t;
+
+typedef struct toolbox_s {
+    sfRenderWindow *win;
+    sfSprite **sprites;
+    sfTexture **textures;
+    int *state;
+} toolbox_t;
 
 typedef struct grid_point_s {
     int altitude;
@@ -58,8 +68,9 @@ typedef struct map_s {
 void destroy_map(map_t *map);
 char *prompt_user_input(void);
 void update_points(map_t *map);
-int loop_editor(sfRenderWindow *window, map_t *map);
-void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event);
+int loop_editor(sfRenderWindow *window, map_t *map, toolbox_t *tool);
+void analyse_events(sfRenderWindow *window, map_t *map, sfEvent event,
+toolbox_t *tool);
 sfVector2f project_iso_point(sfVector3f point, sfVector2f offset);
 void manage_zoom_at(sfVector2i m, map_t *map, float zoom, sfRenderWindow *win);
 void manage_zoom(sfRenderWindow *win, map_t *map, sfEvent event);
@@ -69,12 +80,17 @@ float distance_between_points(sfVector2f p1, sfVector2f p2);
 float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
 void manage_mouse(map_t *map, sfRenderWindow *win);
 int transfer_mouse_press(int tag);
+void analyse_events_win2(sfEvent event, toolbox_t *tool, map_t *map);
+void is_on_button(toolbox_t *toolbox, sfVector2f mouse, map_t *map);
+void change_sprite(toolbox_t *toolbox, int i, map_t *map);
+void change_mode(map_t *map);
 
 /* EVENTS */
 void reset_view(sfRenderWindow *win, map_t *map);
 void resize_window(map_t *map, sfSizeEvent size);
 void analyse_click(sfEvent event, sfMouseButton clicked);
-void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key);
+void analyse_key_pressed(sfRenderWindow *win, map_t *map, sfKeyCode key, toolbox_t *tool);
+void change_sprite(toolbox_t *toolbox, int i, map_t *map);
 
 /* CREATE */
 map_t *create_map(char *filepath);
@@ -82,7 +98,7 @@ sfVector2f **create_2d_map(map_t *map);
 sfVertexArray *create_line(sfVector2f points[2], sfColor color);
 sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2);
 sfRenderWindow *create_window(unsigned int width, unsigned int height,
-                              unsigned int fps, char *name);
+                              sfVector2i pos, char *name);
 
 /* DRAW */
 int draw_tiles(sfRenderWindow *win, map_t *map);
