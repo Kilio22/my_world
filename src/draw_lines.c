@@ -82,13 +82,3 @@ void draw_lines(sfRenderWindow *win, map_t *map, int i, int j)
         sfRenderWindow_drawVertexArray(win, v_array, NULL);
     }
 }
-
-// int draw_2d_map(sfRenderWindow *window, map_t *map)
-// {
-//     for (int i = 0; i < map->rows; i++) {
-//         for (int j = 0; j < map->columns; j++) {
-//             map->mode == tile ? draw_line(window, map, i, j) : draw_line_corner(window, map, i, j);
-//         }
-//     }
-//     return (0);
-// }

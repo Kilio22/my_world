@@ -7,17 +7,6 @@
 
 #include "world.h"
 
-sfSprite *load_cursor(void)
-{
-    sfTexture *texture;
-    sfSprite *sprite;
-
-    texture = sfTexture_createFromFile(cursor_path, NULL);
-    sprite = sfSprite_create();
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    return (sprite);
-}
-
 static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
 {
     grid_point_t **grid = malloc(sizeof(grid_point_t *) * y);

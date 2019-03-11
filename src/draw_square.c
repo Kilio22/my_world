@@ -36,19 +36,3 @@ void draw_square(sfRenderWindow *win, grid_point_t **point, int j, sfColor clr)
     v_array = create_triangle(points, clr);
     sfRenderWindow_drawVertexArray(win, v_array, NULL);
 }
-
-// int draw_tiles(sfRenderWindow *window, map_t *map)
-// {
-//     sfColor color;
-//     int check_color = 0;
-
-//     for (int i = 0; i < map->rows - 1; i++) {
-//         for (int j = 0; j < map->columns - 1; j++) {
-//             check_color = is_on_tile(window, map, &map->grid[i], j);
-//             color = (check_color == 1 ? sfBlue : sfRed);
-//             color = (map->mode == tile ? color : sfRed);
-//             draw_square(window, &map->grid[i], j, color);
-//         }
-//     }
-//     return (0);
-// }

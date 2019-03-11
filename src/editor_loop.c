@@ -10,7 +10,6 @@
 int loop_editor(sfRenderWindow *window, map_t *map)
 {
     sfEvent event;
-    sfSprite *cursor = load_cursor();
 
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event))
@@ -19,7 +18,6 @@ int loop_editor(sfRenderWindow *window, map_t *map)
         sfRenderWindow_setView(window, map->view);
         draw_tiles(window, map);
         map->highlight(window, map);
-        update_cursor_position(map, window, cursor);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
     }

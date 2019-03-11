@@ -16,7 +16,6 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height,
 
     window = sfRenderWindow_create(video_mode, name, sfDefaultStyle, NULL);
     sfRenderWindow_setFramerateLimit(window, fps);
-    sfRenderWindow_setMouseCursorVisible(window, 0);
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_display(window);
     return (window);
