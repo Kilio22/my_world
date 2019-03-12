@@ -35,6 +35,11 @@ extern const char *icon_fp[7];
 extern const sfVector2f icon_pos[6];
 
 typedef enum {
+    up,
+    down
+} my_dig_t;
+
+typedef enum {
     square,
     corner
 } my_mode_t;

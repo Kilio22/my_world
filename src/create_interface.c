@@ -11,7 +11,7 @@ interface_t *create_interface(void)
 {
     interface_t *interface = malloc(sizeof(interface_t));
     sfVector2f vrec = {window_x, window_y};
-    sfVector2i wrec = {window_x, window_y};
+    sfVector2i wrec = {0, 0};
 
     interface->window = create_window(window_x, window_y, wrec, "World editor");
     interface->viewmode = translation;

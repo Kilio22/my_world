@@ -17,7 +17,6 @@ void manage_rotate(sfKeyCode key, map_t *map)
         map->angle_degrees[1] -= 1;
     if (key == sfKeyUp)
         map->angle_degrees[1] += 1;
-    printf("%d %d\n", map->angle_degrees[0], map->angle_degrees[1]);
     map->angle[0] = IN_RADIANS(map->angle_degrees[0]);
     map->angle[1] = IN_RADIANS(map->angle_degrees[1]);
     update_points(map);

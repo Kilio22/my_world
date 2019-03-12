@@ -7,6 +7,20 @@
 
 #include "world.h"
 
+void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face)
+{
+    if (i == 0 && face->mode == square)
+        face->action = dig_up_square;
+    if (i == 0 && face->mode == corner)
+        face->action = dig_up_corner;
+    if (i == 1 && face->mode == square)
+        face->action = dig_down_square;
+    if (i == 1 && face->mode == corner)
+        face->action = dig_down_corner;
+    if (tool->state[0] == 0 && tool->state[1] == 0)
+        face->action = dig_nothing;
+}
+
 void change_sprite(toolbox_t *toolbox, int i, interface_t *face)
 {
     if (i == 2 && toolbox->state[i] == 0) {
@@ -45,6 +59,7 @@ void check_buttons_state(toolbox_t *toolbox, int i, interface_t *face)
         sfSprite_setColor(toolbox->sprites[0], sfWhite);
         toolbox->state[0] = 0;
     }
+    apply_buttons_effect(toolbox, i, face);
 }
 
 void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face)

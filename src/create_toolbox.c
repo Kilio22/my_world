@@ -22,5 +22,7 @@ toolbox_t *create_toolbox(void)
         toolbox->state[i] = 0;
     }
     toolbox->win = create_window(150, 1080, toolbox_pos, "Tool_box");
+    toolbox->state[0] = 2;
+    sfSprite_setColor(toolbox->sprites[0], sfRed);
     return (toolbox);
 }
