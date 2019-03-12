@@ -7,10 +7,10 @@
 
 #include "world.h"
 
-static int highlight_on_cursor(sfRenderWindow *win, map_t *map, int i)
+static int highlight_on_cursor(interface_t *face, map_t *map, int i)
 {
     for (int j = map->columns - 1; j >= 0; j--) {
-        draw_line_corner(win, map, i, j);
+        draw_line_corner(face, map, i, j);
     }
     return (0);
 }
@@ -38,15 +38,15 @@ static void highlight_point(sfRenderWindow *win, map_t *map, int i, int j)
     }
 }
 
-void highlight_corner(sfRenderWindow *win, map_t *map)
+void highlight_corner(interface_t *face, map_t *map)
 {
     int *indexes = transfer_indexes(NULL);
 
     if (indexes != NULL) {
-        highlight_point(win, map, indexes[0], indexes[1]);
+        highlight_point(face->window, map, indexes[0], indexes[1]);
     } else {
         for (int i = map->rows - 1; i >= 0; i--) {
-            highlight_on_cursor(win, map, i);
+            highlight_on_cursor(face, map, i);
         }
     }
 }

@@ -20,7 +20,7 @@ void update_button(toolbox_t *toolbox)
     }
 }
 
-void analyse_events_win2(sfEvent event, toolbox_t *tool, map_t *map)
+void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face)
 {
     sfVector2f mouse_pos;
 
@@ -30,7 +30,7 @@ void analyse_events_win2(sfEvent event, toolbox_t *tool, map_t *map)
 event.mouseButton.button == sfMouseLeft) {
         mouse_pos.x = event.mouseButton.x;
         mouse_pos.y = event.mouseButton.y;
-        is_on_button(tool, mouse_pos, map);
+        is_on_button(tool, mouse_pos, face);
     }
     if (event.type == sfEvtMouseButtonReleased)
         update_button(tool);

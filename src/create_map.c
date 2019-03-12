@@ -7,7 +7,7 @@
 
 #include "world.h"
 
-static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
+static grid_point_t **create_grid(int x, int y, int step, map_t *map)
 {
     grid_point_t **grid = malloc(sizeof(grid_point_t *) * y);
     sfVector3f point;
@@ -17,7 +17,7 @@ static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
         for (int j = 0; j < x; j++) {
             point = (sfVector3f){j * step, i * step, 0};
             (grid[i][j]).altitude = 0;
-            (grid[i][j]).point = project_iso_point(point, offset);
+            (grid[i][j]).point = project_iso_point(point, map);
         }
     }
     return (grid);
@@ -26,20 +26,16 @@ static grid_point_t **create_grid(int x, int y, int step, sfVector2f offset)
 map_t *create_map(char *filepath)
 {
     map_t *map = malloc(sizeof(map_t));
-    sfVector2f view_vec = {1920, 1080};
 
     map->name = filepath;
     map->columns = start_x;
     map->rows = start_y;
     map->step = start_step;
     map->offset = start_offset;
-    map->grid = create_grid(start_x, start_y, start_step, start_offset);
-    map->view = sfView_create();
-    sfView_setSize(map->view, view_vec);
-    map->highlight = highlight_square;
-    map->action = dig_up_square;
-    map->erase = dig_down_square;
-    map->mode = square;
-    map->mode_view = 0;
+    map->angle_degrees[0] = start_angle_x;
+    map->angle_degrees[1] = start_angle_y;
+    map->angle[0] = IN_RADIANS(start_angle_x);
+    map->angle[1] = IN_RADIANS(start_angle_y);
+    map->grid = create_grid(start_x, start_y, start_step, map);
     return (map);
 }

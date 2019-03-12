@@ -17,13 +17,13 @@ int transfer_mouse_press(int tag)
     return (-1);
 }
 
-void manage_mouse(map_t *map, sfRenderWindow *win)
+void manage_mouse(interface_t *face, map_t *map)
 {
     switch (transfer_mouse_press(-1)) {
         case 1:
-            return (map->action(win, map));
+            return (face->action(face, map));
         case 2:
-            return (map->erase(win, map));
+            return (face->action(face, map));
         default:
             break;
     }

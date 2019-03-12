@@ -18,7 +18,7 @@ void update_points(map_t *map)
                 i * map->step,
                 (map->grid[i][j]).altitude
             };
-            (map->grid[i][j]).point = project_iso_point(point, map->offset);
+            (map->grid[i][j]).point = project_iso_point(point, map);
         }
     }
 }

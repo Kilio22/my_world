@@ -7,33 +7,13 @@
 
 #include "world.h"
 
-toolbox_t *create_toolbox(void)
-{
-    toolbox_t *toolbox = malloc(sizeof(toolbox_t));
-    sfVector2i pos2 = {1450, 0};
-
-    toolbox->sprites = malloc(sizeof(sfSprite *) * 6);
-    toolbox->textures = malloc(sizeof(sfTexture *) * 6);
-    toolbox->state = malloc(sizeof(int) * 6);
-    for (int i = 0; i < 6; i++) {
-        toolbox->textures[i] = sfTexture_createFromFile(icone_fp[i], NULL);
-        toolbox->sprites[i] = sfSprite_create();
-        sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);
-        sfSprite_setPosition(toolbox->sprites[i], icone_pos[i]);
-        toolbox->state[i] = 0;
-    }
-    toolbox->win = create_window(150, 1080, pos2, "Tool_box");
-    return (toolbox);
-}
-
 int main(void)
 {
-    sfVector2i pos = {0, 0};
-    sfRenderWindow *window = create_window(1420, 1080, pos, "World editor");
+    interface_t *interface = create_interface();
     map_t *map = create_map(NULL);
     toolbox_t *toolbox = create_toolbox();
 
-    loop_editor(window, map, toolbox);
+    loop_editor(interface, map, toolbox);
     destroy_map(map);
     return (0);
 }

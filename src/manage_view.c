@@ -7,45 +7,50 @@
 
 #include "world.h"
 
-void check_zoom(toolbox_t *tool, sfRenderWindow *win1, map_t *map)
+void check_zoom(toolbox_t *tool, interface_t *face)
 {
-    sfVector2u vect = sfRenderWindow_getSize(win1);
+    sfVector2u vect = sfRenderWindow_getSize(face->window);
     sfVector2i real_vect = {vect.x / 2, vect.y / 2};
 
     if (tool->state[4] == 1)
-        manage_zoom_at(real_vect, map, 0.9, win1);
+        manage_zoom_at(real_vect, face, 0.9);
     if (tool->state[5] == 1)
-        manage_zoom_at(real_vect, map, 1.1, win1);
+        manage_zoom_at(real_vect, face, 1.1);
 }
 
-void reset_view(sfRenderWindow *win, map_t *map)
+void reset_view(interface_t *face, map_t *map)
 {
-    sfVector2u size = sfRenderWindow_getSize(win);
+    sfVector2u size = sfRenderWindow_getSize(face->window);
 
     map->offset = start_offset;
-    sfView_destroy(map->view);
-    map->view = sfView_create();
+    sfView_destroy(face->view);
+    face->view = sfView_create();
     update_points(map);
-    sfView_setSize(map->view, (sfVector2f){size.x, size.y});
+    sfView_setSize(face->view, (sfVector2f){size.x, size.y});
 }
 
-void manage_zoom_at(sfVector2i m, map_t *map, float zoom, sfRenderWindow *win)
+void manage_zoom_at(sfVector2i m, interface_t *face, float zoom)
 {
-    sfVector2f vector = sfRenderWindow_mapPixelToCoords(win, m, map->view);
-    sfView_zoom(map->view, zoom);
-    sfRenderWindow_setView(win, map->view);
-    sfVector2f vector2 = sfRenderWindow_mapPixelToCoords(win, m, map->view);
+    sfVector2f vector = sfRenderWindow_mapPixelToCoords(face->window, m,
+face->view);
+    sfVector2f vector2;
     sfVector2f offset;
+
+    sfView_zoom(face->view, zoom);
+    sfRenderWindow_setView(face->window, face->view);
+    vector2 = sfRenderWindow_mapPixelToCoords(face->window, m, face->view);
     offset.x = vector.x - vector2.x;
     offset.y = vector.y - vector2.y;
-    sfView_move(map->view, offset);
-    sfRenderWindow_setView(win, map->view);
+    sfView_move(face->view, offset);
+    sfRenderWindow_setView(face->window, face->view);
 }
 
-void manage_zoom(sfRenderWindow *win, map_t *map, sfEvent event)
+void manage_zoom(interface_t *face, sfEvent event)
 {
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(face->window);
+
     if (event.mouseWheel.delta == 1)
-        manage_zoom_at(sfMouse_getPositionRenderWindow(win), map, 0.9, win);
+        manage_zoom_at(mouse_pos, face, 0.9);
     if (event.mouseWheel.delta == -1)
-        manage_zoom_at(sfMouse_getPositionRenderWindow(win), map, 1.1, win);
+        manage_zoom_at(mouse_pos, face, 1.1);
 }

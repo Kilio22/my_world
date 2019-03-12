@@ -49,24 +49,28 @@ SRC	=	text_prompt/prompt_user_input.c \
 		analyse_click.c \
 		analyse_events.c \
 		analyse_key_pressed.c \
+		create_interface.c \
 		create_map.c \
+		create_toolbox.c \
 		create_window.c \
 		destroy_map.c \
 		dig_down.c \
+		dig_nothing.c \
 		dig_up.c \
 		dig_what.c \
 		draw_lines.c \
 		draw_square.c \
 		draw_tiles.c \
 		editor_loop.c \
-		event_win2.c	\
+		event_win2.c \
 		global_constants.c \
 		highlight_corner.c \
 		highlight_math.c \
 		highlight_square.c \
+		manage_mouse.c \
 		manage_view.c \
+		manage_viewmode.c \
 		maths.c	\
-		mouse.c \
 		update_points.c	\
 		toolbox_buttons.c
 

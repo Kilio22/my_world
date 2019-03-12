@@ -7,34 +7,35 @@
 
 #include "world.h"
 
-void display_toolbox(toolbox_t *toolbox, map_t *map, sfRenderWindow *win1)
+void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map)
 {
     sfEvent event;
 
+    (void) map;
     while (sfRenderWindow_pollEvent(toolbox->win, &event))
-            analyse_events_win2(event, toolbox, map);
+            analyse_events_win2(event, toolbox, face);
     for (int i = 0; i < 6; i++)
         sfRenderWindow_drawSprite(toolbox->win, toolbox->sprites[i], NULL);
-    check_zoom(toolbox, win1, map);
+    check_zoom(toolbox, face);
     sfRenderWindow_display(toolbox->win);
     sfRenderWindow_clear(toolbox->win, toolbox_color);
 }
 
-int loop_editor(sfRenderWindow *window, map_t *map, toolbox_t *tool)
+int loop_editor(interface_t *face, map_t *map, toolbox_t *tool)
 {
     sfEvent event;
 
-    while (sfRenderWindow_isOpen(window)) {
-        while (sfRenderWindow_pollEvent(window, &event))
-            analyse_events(window, map, event, tool);
-        manage_mouse(map, window);
-        sfRenderWindow_setView(window, map->view);
-        draw_tiles(window, map);
-        map->highlight(window, map);
-        sfRenderWindow_display(window);
-        sfRenderWindow_clear(window, sfBlack);
-        display_toolbox(tool, map, window);
+    while (sfRenderWindow_isOpen(face->window)) {
+        while (sfRenderWindow_pollEvent(face->window, &event))
+            analyse_events(face, map, event, tool);
+        manage_mouse(face, map);
+        sfRenderWindow_setView(face->window, face->view);
+        draw_tiles(face, map);
+        face->highlight(face, map);
+        sfRenderWindow_display(face->window);
+        sfRenderWindow_clear(face->window, sfBlack);
+        display_toolbox(face, tool, map);
     }
-    sfRenderWindow_destroy(window);
+    sfRenderWindow_destroy(face->window);
     return (0);
 }

@@ -16,10 +16,11 @@ static sfVector2f compare_points(sfVector2f p1, sfVector2f p2, sfVector2f old)
     return (old);
 }
 
-int is_closest_corner(sfRenderWindow *win, map_t *map, sfVector2f point)
+int is_closest_corner(interface_t *face, map_t *map, sfVector2f point)
 {
-    sfVector2i m = sfMouse_getPositionRenderWindow(win);
-    sfVector2f mouse = sfRenderWindow_mapPixelToCoords(win, m, map->view);
+    sfVector2i m = sfMouse_getPositionRenderWindow(face->window);
+    sfVector2f mouse = sfRenderWindow_mapPixelToCoords(face->window, m,
+face->view);
     grid_point_t **grid = map->grid;
     sfVector2f a_point = {0, 0};
 
@@ -51,11 +52,12 @@ static bool verif_tile(sfVector2f p, sfVector2f p1,
     return !(is_neg && is_pos);
 }
 
-int is_on_tile(sfRenderWindow *win, map_t *map, grid_point_t **point, int j)
+int is_on_tile(interface_t *face, grid_point_t **point, int j)
 {
     sfVector2f points[3];
-    sfVector2i m = sfMouse_getPositionRenderWindow(win);
-    sfVector2f mouse = sfRenderWindow_mapPixelToCoords(win, m, map->view);
+    sfVector2i m = sfMouse_getPositionRenderWindow(face->window);
+    sfVector2f mouse = sfRenderWindow_mapPixelToCoords(face->window, m,
+face->view);
 
     points[0] = ((*point)[j]).point;
     points[1] = ((*point)[j + 1]).point;

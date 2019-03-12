@@ -8,10 +8,10 @@
 #include "world.h"
 
 static sfVertexArray *create_line_corner(sfVector2f p1, sfVector2f p2,
-                                         sfRenderWindow *win, map_t *map)
+                                         interface_t *face, map_t *map)
 {
-    int i = is_closest_corner(win, map, p1);
-    int j = is_closest_corner(win, map, p2);
+    int i = is_closest_corner(face, map, p1);
+    int j = is_closest_corner(face, map, p2);
     sfVertexArray *vertex_array;
     sfVertex vertex = {.position = p1, .color = sfWhite};
 
@@ -31,22 +31,22 @@ static sfVertexArray *create_line_corner(sfVector2f p1, sfVector2f p2,
     return (vertex_array);
 }
 
-int draw_line_corner(sfRenderWindow *win, map_t *map, int i, int j)
+int draw_line_corner(interface_t *face, map_t *map, int i, int j)
 {
     grid_point_t **grid = map->grid;
     sfVertexArray *v_array;
 
     if (j + 1 < map->columns) {
             v_array = create_line_corner((grid[i][j]).point,
-(grid[i][j + 1]).point, win, map);
+(grid[i][j + 1]).point, face, map);
         if (v_array != NULL)
-            sfRenderWindow_drawVertexArray(win, v_array, NULL);
+            sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
     }
     if (i + 1 < map->rows) {
             v_array = create_line_corner((grid[i][j]).point,
-(grid[i + 1][j]).point, win, map);
+(grid[i + 1][j]).point, face, map);
         if (v_array != NULL)
-            sfRenderWindow_drawVertexArray(win, v_array, NULL);
+            sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
     }
     return (0);
 }
@@ -63,7 +63,7 @@ sfVertexArray *create_line(sfVector2f points[2], sfColor color)
     return (vertex_array);
 }
 
-void draw_lines(sfRenderWindow *win, map_t *map, int i, int j)
+void draw_lines(interface_t *face, map_t *map, int i, int j)
 {
     grid_point_t **grid = map->grid;
     sfColor color = sfBlack;
@@ -74,12 +74,12 @@ void draw_lines(sfRenderWindow *win, map_t *map, int i, int j)
     if (j + 1 < map->columns) {
         points[1] = (grid[i][j + 1]).point;
         v_array = create_line(points, color);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
     }
     if (i + 1 < map->rows) {
         points[1] = (grid[i + 1][j]).point;
         v_array = create_line(points, color);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
     }
 }
 
