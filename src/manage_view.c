@@ -7,11 +7,27 @@
 
 #include "world.h"
 
+int check_clock_status(toolbox_t *tool)
+{
+    sfTime time;
+    float seconds;
+
+    time = sfClock_getElapsedTime(tool->clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds > 0.1) {
+        sfClock_restart(tool->clock);
+        return (1);
+    }
+    return (0);
+}
+
 void check_zoom(toolbox_t *tool, interface_t *face)
 {
     sfVector2u vect = sfRenderWindow_getSize(face->window);
     sfVector2i real_vect = {vect.x / 2, vect.y / 2};
 
+    if (check_clock_status(tool) == 0)
+        return;
     if (tool->state[4] == 1)
         manage_zoom_at(real_vect, face, 0.9);
     if (tool->state[5] == 1)

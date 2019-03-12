@@ -54,6 +54,7 @@ typedef struct toolbox_s {
     sfSprite **sprites;
     sfTexture **textures;
     int *state;
+    sfClock *clock;
 } toolbox_t;
 
 typedef struct grid_point_s {

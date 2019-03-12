@@ -21,6 +21,7 @@ toolbox_t *create_toolbox(void)
         sfSprite_setPosition(toolbox->sprites[i], icon_pos[i]);
         toolbox->state[i] = 0;
     }
+    toolbox->clock = sfClock_create();
     toolbox->win = create_window(150, 1080, toolbox_pos, "Tool_box");
     toolbox->state[0] = 2;
     sfSprite_setColor(toolbox->sprites[0], sfRed);

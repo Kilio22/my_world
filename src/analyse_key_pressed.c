@@ -33,7 +33,8 @@ void change_mode(interface_t *face)
     }
 }
 
-static void analyse_arrows(interface_t *face, sfKeyCode key, map_t *map, toolbox_t *tool)
+static void analyse_arrows(interface_t *face, sfKeyCode key, map_t *map,
+toolbox_t *tool)
 {
     if (face->viewmode == translation && tool->state[3] == 0)
         manage_translation(key, map);
