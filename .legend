@@ -1,1 +1,18 @@
-Nothing yet...
+Every map ending with a .world can be loaded.
+
+The pattern in the files should be looking like this :
+
+x y
+n n n n ... n   (y times)
+n n n n ... n   (y times)
+n n n n ... n   (y times)
+n n n n ... n   (y times)
+n n n n ... n   (y times)
+n n n n ... n   (y times)
+.
+.
+.
+n n n n ... n   (y times)
+(x times)
+
+n is the altitude of a map point

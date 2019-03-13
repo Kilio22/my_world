@@ -9,5 +9,6 @@
 
 void destroy_map(map_t *map)
 {
+    free(map->name);
     free(map);
 }
