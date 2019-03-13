@@ -35,6 +35,7 @@ char *my_strstr(char *str, char const *to_find);
 char *my_str_addchar(char const *str, char const c, int index);
 /* almost same but lesser useful */
 int my_str_isnum(char const *str);
+int my_str_to_int(const char *str);
 int my_str_isalpha(char const *str);
 int my_str_islower(char const *str);
 int my_str_isupper(char const *str);

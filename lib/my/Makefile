@@ -76,7 +76,7 @@ SRC_PRINTF	=	my_dprintf.c \
 				my_vsprintf.c
 
 SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
-SRCS	+=	$(SRC_PRINTF:%=$(PRINTF_PATH)/%)
+# SRCS	+=	$(SRC_PRINTF:%=$(PRINTF_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
 

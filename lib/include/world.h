@@ -148,4 +148,13 @@ void dig_down_square(interface_t *face, map_t *map);
 void dig_down_corner(interface_t *face, map_t *map);
 void update_selected_point(interface_t *face, map_t *map);
 
+/* FILE SYSTEM */
+FILE *open_file(char *filepath);
+
+/* LOAD MAP */
+int reset_map(map_t *map);
+int load_map(map_t *map, char *filepath);
+int **get_points(FILE *stream, map_t *map);
+int get_size_of_map(FILE *stream, map_t *map);
+
 #endif
