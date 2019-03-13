@@ -10,9 +10,9 @@
 
 int main(int argc, char *argv[])
 {
-    toolbox_t *toolbox = create_toolbox();
-    interface_t *interface = create_interface();
+    interface_t *interface;
     char *map_name = NULL;
+    toolbox_t *toolbox;
     map_t *map;
 
     if (argc == 2)
@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
         my_puts("Given file is corrupted or inexistant.");
         return (84);
     }
+    toolbox = create_toolbox();
+    interface = create_interface();
     loop_editor(interface, map, toolbox);
     destroy_map(map);
     return (0);

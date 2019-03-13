@@ -68,15 +68,17 @@ SRC	=	text_prompt/prompt_user_input.c \
 		highlight_corner.c \
 		highlight_math.c \
 		highlight_square.c \
-		load_altitudes.c \
+		load_map_altitudes.c \
 		load_map.c \
 		manage_mouse.c \
 		manage_view.c \
 		manage_viewmode.c \
 		maths.c	\
-		update_points.c	\
-		toolbox_buttons.c	\
-		toolbox_loop.c
+		my_access.c \
+		save_map.c \
+		toolbox_buttons.c \
+		toolbox_loop.c \
+		update_points.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \

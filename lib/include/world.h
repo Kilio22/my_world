@@ -155,6 +155,7 @@ void update_selected_point(interface_t *face, map_t *map);
 
 /* FILE SYSTEM */
 FILE *open_file(char *filepath);
+int my_access(const char *pathname, int mode);
 
 /* LOAD MAP */
 int reset_map(map_t *map);
