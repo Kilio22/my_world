@@ -10,8 +10,8 @@
 
 int main(int argc, char *argv[])
 {
-    interface_t *interface = create_interface();
     toolbox_t *toolbox = create_toolbox();
+    interface_t *interface = create_interface();
     char *map_name = NULL;
     map_t *map;
 
