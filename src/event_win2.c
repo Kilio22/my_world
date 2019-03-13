@@ -17,11 +17,12 @@ void transformation_mode_tool(interface_t *face, toolbox_t *tool)
 
 void update_button(toolbox_t *toolbox)
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++) {
         if (toolbox->state[i] == 1) {
             sfSprite_setColor(toolbox->sprites[i], sfRed);
             toolbox->state[i] = 2;
         }
+    }
     for (int i = 4; i < 6; i++) {
         toolbox->state[i] = 0;
         sfSprite_setColor(toolbox->sprites[i], sfWhite);

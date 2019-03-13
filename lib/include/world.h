@@ -30,9 +30,11 @@ extern const sfColor start_color;
 extern const sfVector2f start_offset;
 extern const char *input_font_path;
 extern const char *cursor_path;
+extern const sfColor trans_white;
 extern const sfColor toolbox_color;
 extern const char *icon_fp[7];
 extern const sfVector2f icon_pos[6];
+extern const char *tile_textures[6];
 
 typedef enum {
     up,
@@ -74,6 +76,7 @@ typedef struct map_s {
 } map_t;
 
 typedef struct interface_s {
+    sfRenderStates **states;
     sfRenderWindow *window;
     my_viewmode_t viewmode;
     my_mode_t mode;
@@ -95,6 +98,9 @@ float distance_between_points(sfVector2f p1, sfVector2f p2);
 float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
 void manage_mouse(interface_t *face, map_t *map);
 int transfer_mouse_press(int tag);
+
+/* TOOLBOX */
+void update_button(toolbox_t *toolbox);
 void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face);
 void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face);
 void check_zoom(toolbox_t *tool, interface_t *face);
@@ -127,7 +133,7 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height,
 int draw_tiles(interface_t *face, map_t *map);
 void draw_lines(interface_t *face, map_t *map, int i, int j);
 int draw_line_corner(interface_t *face, map_t *map, int i, int j);
-void draw_square(sfRenderWindow *win, grid_point_t **point, int j, sfColor);
+void draw_square(interface_t *face, grid_point_t **point, int j, sfColor clr);
 
 /* HIGHLIGHT */
 void highlight_square(interface_t *face, map_t *map);

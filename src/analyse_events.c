@@ -19,6 +19,8 @@ void analyse_events(interface_t *face, map_t *map, sfEvent event,
         sfRenderWindow_close(face->window);
         sfRenderWindow_close(tool->win);
     }
+    if (event.type == sfEvtKeyReleased)
+        update_button(tool);
     if (event.type == sfEvtKeyPressed)
         analyse_key_pressed(face, map, event.key.code, tool);
     if (event.type == sfEvtMouseWheelMoved)

@@ -25,11 +25,13 @@ void change_mode(interface_t *face)
     if (face->mode == square) {
         face->mode = corner;
         face->highlight = highlight_corner;
-        face->action = dig_up_corner;
+        face->action =
+(face->action == dig_down_square ? dig_down_corner : dig_up_corner);
     } else {
         face->mode = square;
         face->highlight = highlight_square;
-        face->action = dig_up_square;
+        face->action =
+(face->action == dig_down_corner ? dig_down_square : dig_up_square);
     }
 }
 

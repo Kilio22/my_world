@@ -16,6 +16,7 @@ const int start_angle_x = 45;
 const int start_angle_y = 35;
 const sfVector2i toolbox_pos = {1450, 0};
 const sfColor start_color = {0, 255, 0, 255};
+const sfColor trans_white = {255, 255, 255, 130};
 const sfVector2f start_offset = {500.0, 200.0};
 const char *input_font_path = "assets/pixelmix.ttf";
 const char *cursor_path = "assets/main_cursor.png";
@@ -36,4 +37,12 @@ const sfVector2f icon_pos[6] = {
     {42, 140},
     {10, 220},
     {80, 220}
+};
+const char *tile_textures[6] = {
+    "assets/sprites/grass.png",
+    "assets/sprites/dirt2.png",
+    "assets/sprites/dirt.png",
+    "assets/sprites/sand.png",
+    "assets/sprites/stone.png",
+    "assets/sprites/stone2.png"
 };
