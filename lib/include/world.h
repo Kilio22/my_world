@@ -37,6 +37,7 @@ extern const sfVector2f icon_pos[6];
 extern const char *tile_textures[6];
 extern const char *text[6];
 extern const sfColor hover;
+extern const char *warning_msg;
 
 typedef enum {
     up,
@@ -123,7 +124,8 @@ void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool);
 void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
                          toolbox_t *tool);
-
+void display_warning(const char *str);
+void check_warning(map_t *map);
 
 /* CREATE */
 toolbox_t *create_toolbox(void);

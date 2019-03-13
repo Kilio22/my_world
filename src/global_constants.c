@@ -55,3 +55,6 @@ const char *text[6] = {
     "Zoom in",
     "Zoom out"
 };
+const char *warning_msg =
+"      Be careful ! If you try to work on a really big map, \n\
+  your computer will have a hard time working at full speed !";

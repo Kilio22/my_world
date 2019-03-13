@@ -58,6 +58,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		dig_nothing.c \
 		dig_up.c \
 		dig_what.c \
+		display_warning.c	\
 		draw_lines.c \
 		draw_square.c \
 		draw_tiles.c \
