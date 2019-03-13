@@ -45,12 +45,12 @@ map_t *create_map(char *filepath)
 {
     map_t *map = malloc(sizeof(map_t));
 
+    load_base_config(map);
     if (filepath == NULL) {
         load_blank_map(map);
     } else {
         if (load_map(map, filepath) == -1)
             return (NULL);
     }
-    load_base_config(map);
     return (map);
 }
