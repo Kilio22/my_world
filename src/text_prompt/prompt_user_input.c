@@ -35,7 +35,8 @@ sfText *create_text(void)
 char *prompt_user_input(void)
 {
     sfVector2i pos = {500, 500};
-    sfRenderWindow *win = create_window(400, 200, pos, "Enter your text");
+    sfRenderWindow *win =
+create_window((sfVector2u){700, 100}, pos, "Enter your text", 5);
     sfEvent event;
     int n_return = 0;
     sfText *text = create_text();

@@ -35,6 +35,8 @@ extern const sfColor toolbox_color;
 extern const char *icon_fp[7];
 extern const sfVector2f icon_pos[6];
 extern const char *tile_textures[6];
+extern const char *text[6];
+extern const sfColor hover;
 
 typedef enum {
     up,
@@ -55,8 +57,10 @@ typedef struct toolbox_s {
     sfRenderWindow *win;
     sfSprite **sprites;
     sfTexture **textures;
+    sfText **text;
     int *state;
     sfClock *clock;
+    sfView *tool_view;
 } toolbox_t;
 
 typedef struct grid_point_s {
@@ -100,9 +104,11 @@ void manage_mouse(interface_t *face, map_t *map);
 int transfer_mouse_press(int tag);
 
 /* TOOLBOX */
+void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map);
 void update_button(toolbox_t *toolbox);
 void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face);
 void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face);
+int is_on_button_bool(sfSprite *sprite, sfVector2f mouse);
 void check_zoom(toolbox_t *tool, interface_t *face);
 
 /* EVENTS */
@@ -126,9 +132,8 @@ interface_t *create_interface(void);
 sfVector2f **create_2d_map(map_t *map);
 sfVertexArray *create_line(sfVector2f points[2], sfColor color);
 sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2);
-sfRenderWindow *create_window(unsigned int width, unsigned int height,
-                              sfVector2i pos, char *name);
-
+sfRenderWindow *create_window(sfVector2u win_size,
+                              sfVector2i pos, char *name, int mode);
 /* DRAW */
 int draw_tiles(interface_t *face, map_t *map);
 void draw_lines(interface_t *face, map_t *map, int i, int j);

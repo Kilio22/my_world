@@ -72,7 +72,8 @@ SRC	=	text_prompt/prompt_user_input.c \
 		manage_viewmode.c \
 		maths.c	\
 		update_points.c	\
-		toolbox_buttons.c
+		toolbox_buttons.c	\
+		toolbox_loop.c
 
 SRC_LIB	=	my string stdio \
 			csfml-graphics csfml-system \

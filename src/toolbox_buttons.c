@@ -7,6 +7,17 @@
 
 #include "world.h"
 
+int is_on_button_bool(sfSprite *sprite, sfVector2f mouse)
+{
+    sfFloatRect button_pos;
+    sfFloatRect mouse_pos = {mouse.x, mouse.y, 1, 1};
+
+    button_pos = sfSprite_getGlobalBounds(sprite);
+    if (sfFloatRect_intersects(&button_pos, &mouse_pos, NULL))
+        return (1);
+    return (0);
+}
+
 void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face)
 {
     if (i == 0 && face->mode == square)

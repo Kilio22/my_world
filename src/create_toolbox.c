@@ -7,10 +7,22 @@
 
 #include "world.h"
 
-toolbox_t *create_toolbox(void)
+void create_tool_text(toolbox_t *tool)
 {
-    toolbox_t *toolbox = malloc(sizeof(toolbox_t));
+    sfFont *font = sfFont_createFromFile("assets/pixelmix.ttf");
 
+    tool->text = malloc(sizeof(sfText *) * 6);
+    for (int i = 0; i < 6; i++) {
+        tool->text[i] = sfText_create();
+        sfText_setString(tool->text[i], text[i]);
+        sfText_setFont(tool->text[i], font);
+        sfText_setCharacterSize(tool->text[i], 15);
+        sfText_setFillColor(tool->text[i], sfBlue);
+    }
+}
+
+void create_button(toolbox_t *toolbox)
+{
     toolbox->sprites = malloc(sizeof(sfSprite *) * 6);
     toolbox->textures = malloc(sizeof(sfTexture *) * 6);
     toolbox->state = malloc(sizeof(int) * 6);
@@ -21,9 +33,18 @@ toolbox_t *create_toolbox(void)
         sfSprite_setPosition(toolbox->sprites[i], icon_pos[i]);
         toolbox->state[i] = 0;
     }
+}
+
+toolbox_t *create_toolbox(void)
+{
+    toolbox_t *toolbox = malloc(sizeof(toolbox_t));
+    sfVector2u tvec = {150, 900};
+
+    create_button(toolbox);
     toolbox->clock = sfClock_create();
-    toolbox->win = create_window(150, 1080, toolbox_pos, "Tool_box");
+    toolbox->win = create_window(tvec, toolbox_pos, "Tool_box", 5);
     toolbox->state[0] = 2;
     sfSprite_setColor(toolbox->sprites[0], sfRed);
+    create_tool_text(toolbox);
     return (toolbox);
 }

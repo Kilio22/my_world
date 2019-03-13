@@ -27,8 +27,9 @@ interface_t *create_interface(void)
     interface_t *interface = malloc(sizeof(interface_t));
     sfVector2f vrec = {window_x, window_y};
     sfVector2i wrec = {0, 0};
+    sfVector2u wvec = {window_x, window_y};
 
-    interface->window = create_window(window_x, window_y, wrec, "World editor");
+    interface->window = create_window(wvec, wrec, "World editor", 7);
     interface->viewmode = translation;
     interface->mode = square;
     interface->view = sfView_create();

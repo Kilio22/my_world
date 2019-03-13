@@ -7,20 +7,6 @@
 
 #include "world.h"
 
-void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map)
-{
-    sfEvent event;
-
-    (void) map;
-    while (sfRenderWindow_pollEvent(toolbox->win, &event))
-            analyse_events_win2(event, toolbox, face);
-    for (int i = 0; i < 6; i++)
-        sfRenderWindow_drawSprite(toolbox->win, toolbox->sprites[i], NULL);
-    check_zoom(toolbox, face);
-    sfRenderWindow_display(toolbox->win);
-    sfRenderWindow_clear(toolbox->win, toolbox_color);
-}
-
 int loop_editor(interface_t *face, map_t *map, toolbox_t *tool)
 {
     sfEvent event;
