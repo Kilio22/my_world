@@ -6,6 +6,7 @@
 */
 
 #include "world.h"
+#include "my_string.h"
 
 static grid_point_t **create_grid(int x, int y, map_t *map)
 {
@@ -36,6 +37,8 @@ static void load_base_config(map_t *map)
 static void load_blank_map(map_t *map)
 {
     map->name = prompt_user_input();
+    if (!my_str_ends_with(map->name, ".world"))
+        map->name = my_strcat(map->name, my_strdup(".world"));
     map->rows = start_x;
     map->columns = start_y;
     map->grid = create_grid(map->rows, map->columns, map);
