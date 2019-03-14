@@ -45,7 +45,6 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 SRC	=	text_prompt/prompt_user_input.c \
 		text_prompt/update_input.c \
 		text_prompt/verify_input.c \
-		3d_projection.c \
 		analyse_click.c \
 		analyse_events.c \
 		analyse_key_pressed.c \
@@ -76,6 +75,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		manage_viewmode.c \
 		maths.c	\
 		my_access.c \
+		projection_3d.c \
 		save_map.c \
 		toolbox_buttons.c \
 		toolbox_loop.c \
