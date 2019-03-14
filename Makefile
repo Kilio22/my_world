@@ -75,6 +75,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		manage_viewmode.c \
 		maths.c	\
 		my_access.c \
+		my_str_ends_with.c \
 		projection_3d.c \
 		save_map.c \
 		toolbox_buttons.c \

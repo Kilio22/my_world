@@ -14,7 +14,7 @@ int my_str_ends_with(const char *str, const char *end)
 
     if (endlen > len || endlen == 0)
         return (0);
-    while (endlen-- >= 0) {
+    while (endlen-- > 0) {
         if (str[--len] != end[endlen])
             return (0);
     }

@@ -35,7 +35,8 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC_TESTS	=	test_pattern.c
+SRC_TESTS	=	test_pattern.c \
+				test_my_str_ends_with.c
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_TESTS)
 OBJ	=	$(SRCS:.c=.test_o)
