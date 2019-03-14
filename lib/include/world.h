@@ -90,19 +90,19 @@ typedef struct interface_s {
     void (*action)(struct interface_s *, struct map_s *);
 } interface_t;
 
-void destroy_map(map_t *map);
 char *prompt_user_input(void);
 void update_points(map_t *map);
-int loop_editor(interface_t *face, map_t *map, toolbox_t *tool);
-sfVector2f project_iso_point(sfVector3f point, map_t *map);
-void manage_zoom(interface_t *face, sfEvent event);
-void manage_zoom_at(sfVector2i m, interface_t *face, float zoom);
-int is_on_tile(interface_t *face, grid_point_t **point, int j);
-int is_closest_corner(interface_t *face, map_t *map, sfVector2f point);
-float distance_between_points(sfVector2f p1, sfVector2f p2);
-float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
-void manage_mouse(interface_t *face, map_t *map);
 int transfer_mouse_press(int tag);
+void manage_mouse(interface_t *face, map_t *map);
+void manage_zoom(interface_t *face, sfEvent event);
+int my_str_ends_with(const char *str, const char *end);
+sfVector2f project_iso_point(sfVector3f point, map_t *map);
+float distance_between_points(sfVector2f p1, sfVector2f p2);
+int is_on_tile(interface_t *face, grid_point_t **point, int j);
+int loop_editor(interface_t *face, map_t *map, toolbox_t *tool);
+void manage_zoom_at(sfVector2i m, interface_t *face, float zoom);
+float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
+int is_closest_corner(interface_t *face, map_t *map, sfVector2f point);
 
 /* TOOLBOX */
 void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map);
@@ -125,7 +125,7 @@ void change_sprite(toolbox_t *toolbox, int i, interface_t *face);
 void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool);
 void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
-                         toolbox_t *tool);
+                        toolbox_t *tool);
 
 /* CREATE */
 toolbox_t *create_toolbox(void);
@@ -135,7 +135,11 @@ sfVector2f **create_2d_map(map_t *map);
 sfVertexArray *create_line(sfVector2f points[2], sfColor color);
 sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2);
 sfRenderWindow *create_window(sfVector2u win_size,
-                              sfVector2i pos, char *name, int mode);
+                            sfVector2i pos, char *name, int mode);
+
+/* DESTROY */
+void destroy_map(map_t *map);
+
 /* DRAW */
 int draw_tiles(interface_t *face, map_t *map);
 void draw_lines(interface_t *face, map_t *map, int i, int j);
