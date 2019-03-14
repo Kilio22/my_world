@@ -86,7 +86,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		update_points.c
 
 SRC_LIB	=	my string stdio \
-			csfml-graphics csfml-system \
+			csfml-graphics csfml-system csfml-audio\
 			m
 
 LIB_PATHS	=	lib/my lib/string lib/stdio

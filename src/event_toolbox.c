@@ -38,6 +38,7 @@ map_t *map)
         sfRenderWindow_close(tool->win);
     if (event.type == sfEvtMouseButtonPressed &&
 event.mouseButton.button == sfMouseLeft) {
+        sfSound_play(tool->sound);
         mouse_pos.x = event.mouseButton.x;
         mouse_pos.y = event.mouseButton.y;
         is_on_button(tool, mouse_pos, face, map);

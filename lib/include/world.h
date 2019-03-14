@@ -62,6 +62,8 @@ typedef struct toolbox_s {
     sfText **text;
     int *state;
     sfClock *clock;
+    sfSound *sound;
+    sfSoundBuffer *buffer;
 } toolbox_t;
 
 typedef struct grid_point_s {
