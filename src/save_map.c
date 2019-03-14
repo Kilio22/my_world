@@ -9,5 +9,5 @@
 
 void save_map(map_t *map)
 {
-    
+
 }

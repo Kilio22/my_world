@@ -12,7 +12,7 @@ void create_textures_for_tiles(interface_t *face)
     sfTexture *texture;
 
     face->states = malloc(sizeof(sfRenderStates *) * 6);
-    for (int i = 0; i < 6; i ++) {
+    for (int i = 0; i < 6; i++) {
         texture = sfTexture_createFromFile(tile_textures[i], NULL);
         face->states[i] = malloc(sizeof(sfRenderStates));
         face->states[i]->shader = NULL;

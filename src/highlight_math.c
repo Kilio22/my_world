@@ -35,7 +35,7 @@ face->view);
 }
 
 static bool verif_tile(sfVector2f p, sfVector2f p1,
-                       sfVector2f p2, sfVector2f p3)
+                    sfVector2f p2, sfVector2f p3)
 {
     float v1 = 0.0;
     float v2 = 0.0;

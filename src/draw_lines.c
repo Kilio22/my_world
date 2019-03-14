@@ -8,7 +8,7 @@
 #include "world.h"
 
 static sfVertexArray *create_line_corner(sfVector2f p1, sfVector2f p2,
-                                         interface_t *face, map_t *map)
+                                        interface_t *face, map_t *map)
 {
     int i = is_closest_corner(face, map, p1);
     int j = is_closest_corner(face, map, p2);

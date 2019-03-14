@@ -136,3 +136,4 @@ flycheck_*.el
 unit_test*
 vgcore*
 my_world
+.todo

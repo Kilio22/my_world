@@ -49,7 +49,7 @@ toolbox_t *tool)
 }
 
 void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
-                         toolbox_t *tool)
+                        toolbox_t *tool)
 {
     sfVector2u vect = {150, 900};
 

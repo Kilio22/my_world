@@ -8,7 +8,7 @@
 #include <SFML/Graphics.h>
 
 sfRenderWindow *create_window(sfVector2u win_size,
-                              sfVector2i pos, char *name, int mode)
+                            sfVector2i pos, char *name, int mode)
 {
     sfVideoMode video_mode = {win_size.x, win_size.y, 32};
     sfRenderWindow *window;
