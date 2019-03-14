@@ -77,9 +77,11 @@ SRC	=	text_prompt/prompt_user_input.c \
 		my_access.c \
 		my_str_ends_with.c \
 		projection_3d.c \
+		reset_map.c	\
 		save_map.c \
 		toolbox_buttons.c \
 		toolbox_loop.c \
+		update_map_size.c	\
 		update_points.c
 
 SRC_LIB	=	my string stdio \

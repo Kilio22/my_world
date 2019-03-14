@@ -21,7 +21,7 @@ void display_text(toolbox_t *tool)
     sfVector2f mouse = {m.x, m.y};
     sfVector2f text_pos = {m.x - 30, m.y + 20};
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < NB_BUTTONS; i++) {
         if (is_on_button_bool(tool->sprites[i], mouse)) {
             sfText_setPosition(tool->text[i], text_pos);
             sfRenderWindow_drawText(tool->win, tool->text[i], NULL);
@@ -39,8 +39,8 @@ void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map)
     sfEvent event;
 
     while (sfRenderWindow_pollEvent(toolbox->win, &event))
-            analyse_events_win2(event, toolbox, face);
-    for (int i = 0; i < 6; i++)
+            analyse_events_win2(event, toolbox, face, map);
+    for (int i = 0; i < NB_BUTTONS; i++)
         sfRenderWindow_drawSprite(toolbox->win, toolbox->sprites[i], NULL);
     display_text(toolbox);
     check_zoom(toolbox, face);

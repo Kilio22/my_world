@@ -7,6 +7,20 @@
 
 #include "world.h"
 
+int check_clock_warning(sfClock *clock)
+{
+    sfTime time;
+    float seconds;
+
+    time = sfClock_getElapsedTime(clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds > 2) {
+        sfClock_restart(clock);
+        return (1);
+    }
+    return (0);
+}
+
 sfText *create_text_warning(const char *str)
 {
     sfText *text = sfText_create();
@@ -20,8 +34,10 @@ sfText *create_text_warning(const char *str)
     return (text);
 }
 
-void analyse_event_warning(sfEvent event, sfRenderWindow *win)
+void analyse_event_warning(sfEvent event, sfRenderWindow *win, sfClock *clock)
 {
+    if (check_clock_warning(clock) == 0)
+        return;
     if (event.type == sfEvtClosed || event.type == sfEvtKeyPressed)
         sfRenderWindow_close(win);
 }
@@ -31,12 +47,13 @@ void display_warning(const char *str)
     sfVector2u win_size = {1300, 100};
     sfVector2i win_pos = {100, 540};
     sfEvent event;
+    sfClock *clock = sfClock_create();
     sfText *text = create_text_warning(str);
     sfRenderWindow *win = create_window(win_size, win_pos, "WARNING", 7);
 
     while (sfRenderWindow_isOpen(win)) {
         while (sfRenderWindow_pollEvent(win, &event))
-            analyse_event_warning(event, win);
+            analyse_event_warning(event, win, clock);
         sfRenderWindow_drawText(win, text, NULL);
         sfRenderWindow_display(win);
         sfRenderWindow_clear(win, sfBlack);

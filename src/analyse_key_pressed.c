@@ -25,15 +25,19 @@ void change_mode(interface_t *face)
     if (face->mode == square) {
         face->mode = corner;
         face->highlight = highlight_corner;
-        if (face->action == dig_nothing)
+        if (face->action == reset_square) {
+            face->action = reset_corner;
             return;
+        }
         face->action =
 (face->action == dig_down_square ? dig_down_corner : dig_up_corner);
     } else {
         face->mode = square;
         face->highlight = highlight_square;
-        if (face->action == dig_nothing)
+        if (face->action == reset_corner) {
+            face->action = reset_square;
             return;
+        }
         face->action =
 (face->action == dig_down_corner ? dig_down_square : dig_up_square);
     }
@@ -63,4 +67,8 @@ void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
         transformation_mode(face, tool);
     if (key == sfKeyT && !sfRenderWindow_isOpen(tool->win))
         tool->win = create_window(vect, toolbox_pos, "Tool_box", 5);
+    if (key == sfKeyA)
+        reset_map_altitude(map);
+    if (key == sfKeyU)
+        delete_column(map);
 }

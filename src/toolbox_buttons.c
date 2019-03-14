@@ -18,8 +18,10 @@ int is_on_button_bool(sfSprite *sprite, sfVector2f mouse)
     return (0);
 }
 
-void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face)
+void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map)
 {
+    void (*tab[4])(map_t *) = {add_column, delete_column, add_row, delete_row};
+
     if (i == 0 && face->mode == square)
         face->action = dig_up_square;
     if (i == 0 && face->mode == corner)
@@ -28,15 +30,21 @@ void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face)
         face->action = dig_down_square;
     if (i == 1 && face->mode == corner)
         face->action = dig_down_corner;
-    if (tool->state[0] == 0 && tool->state[1] == 0)
-        face->action = dig_nothing;
+    if (tool->state[0] == 0 && tool->state[1] == 0 && face->mode == square)
+        face->action = reset_square;
+    if (tool->state[0] == 0 && tool->state[1] == 0 && face->mode == corner)
+        face->action = reset_corner;
+    if (i == 6 && tool->state[i] == 1)
+        reset_map_altitude(map);
+    if (i >= 7 && i <= 10 && tool->state[i] == 1)
+        tab[i - 7](map);
 }
 
 void change_sprite(toolbox_t *toolbox, int i, interface_t *face)
 {
     if (i == 2 && toolbox->state[i] == 0) {
         toolbox->state[i] = 1;
-        toolbox->textures[i] = sfTexture_createFromFile(icon_fp[6], NULL);
+        toolbox->textures[i] = sfTexture_createFromFile(icon_fp[11], NULL);
         sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);
         sfSprite_setColor(toolbox->sprites[i], sfWhite);
         return (change_mode(face));
@@ -50,7 +58,8 @@ void change_sprite(toolbox_t *toolbox, int i, interface_t *face)
     }
 }
 
-void check_buttons_state(toolbox_t *toolbox, int i, interface_t *face)
+void check_buttons_state(toolbox_t *toolbox, int i, interface_t *face,
+map_t *map)
 {
     if (i == 2)
         return (change_sprite(toolbox, i, face));
@@ -70,18 +79,19 @@ void check_buttons_state(toolbox_t *toolbox, int i, interface_t *face)
         sfSprite_setColor(toolbox->sprites[0], sfWhite);
         toolbox->state[0] = 0;
     }
-    apply_buttons_effect(toolbox, i, face);
+    apply_buttons_effect(toolbox, i, face, map);
 }
 
-void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face)
+void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face,
+map_t *map)
 {
     sfFloatRect button_pos;
     sfFloatRect mouse_pos = {mouse.x, mouse.y, 1, 1};
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < NB_BUTTONS; i++) {
         button_pos = sfSprite_getGlobalBounds(toolbox->sprites[i]);
         if (sfFloatRect_intersects(&button_pos, &mouse_pos, NULL)) {
-            return (check_buttons_state(toolbox, i, face));
+            return (check_buttons_state(toolbox, i, face, map));
         }
     }
 }

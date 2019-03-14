@@ -17,6 +17,7 @@
 #include <math.h>
 
 #define IN_RADIANS(angle) (angle * M_PI / 180)
+#define NB_BUTTONS 11
 
 extern const int start_x;
 extern const int start_y;
@@ -32,10 +33,10 @@ extern const char *input_font_path;
 extern const char *cursor_path;
 extern const sfColor trans_white;
 extern const sfColor toolbox_color;
-extern const char *icon_fp[7];
-extern const sfVector2f icon_pos[6];
+extern const char *icon_fp[12];
+extern const sfVector2f icon_pos[NB_BUTTONS];
 extern const char *tile_textures[6];
-extern const char *text[6];
+extern const char *text[NB_BUTTONS];
 extern const sfColor hover;
 extern const char *warning_msg;
 
@@ -107,8 +108,10 @@ int is_closest_corner(interface_t *face, map_t *map, sfVector2f point);
 /* TOOLBOX */
 void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map);
 void update_button(toolbox_t *toolbox);
-void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face);
-void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face);
+void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face,
+map_t *map);
+void is_on_button(toolbox_t *toolbox, sfVector2f mouse, interface_t *face,
+map_t *map);
 int is_on_button_bool(sfSprite *sprite, sfVector2f mouse);
 void check_zoom(toolbox_t *tool, interface_t *face);
 
@@ -158,6 +161,13 @@ void dig_up_corner(interface_t *face, map_t *map);
 void dig_down_square(interface_t *face, map_t *map);
 void dig_down_corner(interface_t *face, map_t *map);
 void update_selected_point(interface_t *face, map_t *map);
+void reset_map_altitude(map_t *map);
+void add_row(map_t *map);
+void delete_row(map_t *map);
+void delete_column(map_t *map);
+void add_column(map_t *map);
+void reset_corner(interface_t *face, map_t *map);
+void reset_square(interface_t *face, map_t *map);
 
 /* FILE SYSTEM */
 FILE *open_file(char *filepath);

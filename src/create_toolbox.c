@@ -11,8 +11,8 @@ void create_tool_text(toolbox_t *tool)
 {
     sfFont *font = sfFont_createFromFile("assets/pixelmix.ttf");
 
-    tool->text = malloc(sizeof(sfText *) * 6);
-    for (int i = 0; i < 6; i++) {
+    tool->text = malloc(sizeof(sfText *) * NB_BUTTONS);
+    for (int i = 0; i < NB_BUTTONS; i++) {
         tool->text[i] = sfText_create();
         sfText_setString(tool->text[i], text[i]);
         sfText_setFont(tool->text[i], font);
@@ -23,10 +23,10 @@ void create_tool_text(toolbox_t *tool)
 
 void create_button(toolbox_t *toolbox)
 {
-    toolbox->sprites = malloc(sizeof(sfSprite *) * 6);
-    toolbox->textures = malloc(sizeof(sfTexture *) * 6);
-    toolbox->state = malloc(sizeof(int) * 6);
-    for (int i = 0; i < 6; i++) {
+    toolbox->sprites = malloc(sizeof(sfSprite *) * NB_BUTTONS);
+    toolbox->textures = malloc(sizeof(sfTexture *) * NB_BUTTONS);
+    toolbox->state = malloc(sizeof(int) * NB_BUTTONS);
+    for (int i = 0; i < NB_BUTTONS; i++) {
         toolbox->textures[i] = sfTexture_createFromFile(icon_fp[i], NULL);
         toolbox->sprites[i] = sfSprite_create();
         sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);

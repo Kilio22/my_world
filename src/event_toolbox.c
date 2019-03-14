@@ -23,13 +23,14 @@ void update_button(toolbox_t *toolbox)
             toolbox->state[i] = 2;
         }
     }
-    for (int i = 4; i < 6; i++) {
+    for (int i = 4; i < NB_BUTTONS; i++) {
         toolbox->state[i] = 0;
         sfSprite_setColor(toolbox->sprites[i], sfWhite);
     }
 }
 
-void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face)
+void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face,
+map_t *map)
 {
     sfVector2f mouse_pos;
 
@@ -39,7 +40,7 @@ void analyse_events_win2(sfEvent event, toolbox_t *tool, interface_t *face)
 event.mouseButton.button == sfMouseLeft) {
         mouse_pos.x = event.mouseButton.x;
         mouse_pos.y = event.mouseButton.y;
-        is_on_button(tool, mouse_pos, face);
+        is_on_button(tool, mouse_pos, face, map);
     }
     if (event.type == sfEvtMouseButtonReleased)
         update_button(tool);

@@ -16,9 +16,9 @@ int find_texture(int a1, int a2, int a3, int a4)
         return (1);
     if (biggest < -120)
         return (5);
-    if (biggest > 50 && biggest < 150)
+    if (biggest > 50 && biggest <= 150)
         return (2);
-    if (biggest > 150 && biggest < 200)
+    if (biggest > 150 && biggest <= 200)
         return (3);
     if (biggest > 200)
         return (4);
