@@ -41,7 +41,7 @@ SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_TESTS)
 OBJ	=	$(SRCS:.c=.test_o)
 LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
-CFLAGS	=	-Wall -Wextra -Werror -I $(INCL_PATH) --coverage
+CFLAGS	=	-Wall -Wextra -I $(INCL_PATH) --coverage
 LDFLAGS	=	$(LIB_PATHS_FLAG) $(LIBRARIES) -lcriterion
 
 all:	message $(NAME)
