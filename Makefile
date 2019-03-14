@@ -53,6 +53,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		create_toolbox.c \
 		create_window.c \
 		destroy_map.c \
+		destroy_toolbox.c	\
 		dig_down.c \
 		dig_nothing.c \
 		dig_up.c \

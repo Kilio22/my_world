@@ -62,7 +62,6 @@ typedef struct toolbox_s {
     sfText **text;
     int *state;
     sfClock *clock;
-    sfView *tool_view;
 } toolbox_t;
 
 typedef struct grid_point_s {
@@ -142,6 +141,7 @@ sfRenderWindow *create_window(sfVector2u win_size,
 
 /* DESTROY */
 void destroy_map(map_t *map);
+void destroy_toolbox(toolbox_t *tool);
 
 /* DRAW */
 int draw_tiles(interface_t *face, map_t *map);

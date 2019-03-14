@@ -28,6 +28,7 @@ static int load_editor(map_t *map)
     interface_t *interface = create_interface(map->name);
 
     loop_editor(interface, map, toolbox);
+    destroy_toolbox(toolbox);
     return (0);
 }
 
