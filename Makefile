@@ -63,7 +63,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		draw_square.c \
 		draw_tiles.c \
 		editor_loop.c \
-		event_win2.c \
+		event_toolbox.c \
 		fs_openfile.c \
 		global_constants.c \
 		highlight_corner.c \

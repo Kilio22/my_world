@@ -51,7 +51,7 @@ void check_warning(map_t *map)
 
     if (i == 1)
         return;
-    if (map->columns * map->rows >= 100) {
+    if (map->columns * map->rows >= 400) {
         display_warning(warning_msg);
         i++;
     }
