@@ -41,6 +41,8 @@ int load_map(map_t *map, char *filepath)
         return (reset_map(map));
     map->name = my_strdup(filepath);
     get_size_of_map(stream, map);
+    if (map->rows <= 0 || map->columns <= 0)
+        return (reset_map(map));
     points = get_points(stream, map);
     if (points == NULL)
         return (reset_map(map));

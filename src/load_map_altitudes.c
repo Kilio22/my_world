@@ -45,6 +45,8 @@ int **get_points(FILE *stream, map_t *map)
     for (int i = 0; i < map->rows; i++) {
         points[i] = malloc(sizeof(int) * map->columns);
         line = read_next_line(stream);
+        if (line == NULL)
+            return (NULL);
         array = split_line(line, (size_t) map->columns);
         if (array == NULL)
             return (NULL);

@@ -19,8 +19,15 @@ int main(int argc, char *argv[])
         map_name = argv[1];
     map = create_map(map_name);
     if (map == NULL) {
-        my_puts("Given file is corrupted or inexistant.");
+        my_puts("Given file is invalid or inexistant.");
         return (84);
+    }
+    printf("%d %d\n", map->rows, map->columns);
+    for (int i = 0; i < map->rows; i++) {
+        for (int j = 0; j < map->columns; j++) {
+            printf("%d ", map->grid[i][j].altitude);
+        }
+        printf("\n");
     }
     toolbox = create_toolbox();
     interface = create_interface();

@@ -113,7 +113,9 @@ int is_on_button_bool(sfSprite *sprite, sfVector2f mouse);
 void check_zoom(toolbox_t *tool, interface_t *face);
 
 /* EVENTS */
+void check_warning(map_t *map);
 void change_mode(interface_t *face);
+void display_warning(const char *str);
 void manage_rotate(sfKeyCode key, map_t *map);
 void reset_view(interface_t *face, map_t *map);
 void manage_translation(sfKeyCode key, map_t *map);
@@ -124,8 +126,6 @@ void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool);
 void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
                          toolbox_t *tool);
-void display_warning(const char *str);
-void check_warning(map_t *map);
 
 /* CREATE */
 toolbox_t *create_toolbox(void);
