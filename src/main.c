@@ -25,7 +25,7 @@ void display_map(map_t *map)
 static int load_editor(map_t *map)
 {
     toolbox_t *toolbox = create_toolbox();
-    interface_t *interface = create_interface();
+    interface_t *interface = create_interface(map->name);
 
     loop_editor(interface, map, toolbox);
     return (0);

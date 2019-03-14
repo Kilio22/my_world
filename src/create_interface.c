@@ -6,6 +6,7 @@
 */
 
 #include "world.h"
+#include "my_string.h"
 
 void create_textures_for_tiles(interface_t *face)
 {
@@ -22,14 +23,17 @@ void create_textures_for_tiles(interface_t *face)
     }
 }
 
-interface_t *create_interface(void)
+interface_t *create_interface(char *map_name)
 {
     interface_t *interface = malloc(sizeof(interface_t));
     sfVector2f vrec = {window_x, window_y};
     sfVector2i wrec = {0, 0};
     sfVector2u wvec = {window_x, window_y};
+    char *win_name = my_strdup("Currently editing \"");
 
-    interface->window = create_window(wvec, wrec, "World editor", 7);
+    win_name = my_strcat(win_name, my_strdup(map_name));
+    win_name = my_strcat(win_name, my_strdup("\""));
+    interface->window = create_window(wvec, wrec, win_name, 7);
     interface->viewmode = translation;
     interface->mode = square;
     interface->view = sfView_create();

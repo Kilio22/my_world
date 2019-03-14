@@ -90,7 +90,6 @@ typedef struct interface_s {
     void (*action)(struct interface_s *, struct map_s *);
 } interface_t;
 
-char *prompt_user_input(void);
 void update_points(map_t *map);
 int transfer_mouse_press(int tag);
 void manage_mouse(interface_t *face, map_t *map);
@@ -102,6 +101,7 @@ int is_on_tile(interface_t *face, grid_point_t **point, int j);
 int loop_editor(interface_t *face, map_t *map, toolbox_t *tool);
 void manage_zoom_at(sfVector2i m, interface_t *face, float zoom);
 float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
+char *prompt_user_input(sfVector2u win_size, char *win_name);
 int is_closest_corner(interface_t *face, map_t *map, sfVector2f point);
 
 /* TOOLBOX */
@@ -130,8 +130,8 @@ void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
 /* CREATE */
 toolbox_t *create_toolbox(void);
 map_t *create_map(char *filepath);
-interface_t *create_interface(void);
 sfVector2f **create_2d_map(map_t *map);
+interface_t *create_interface(char *map_name);
 sfVertexArray *create_line(sfVector2f points[2], sfColor color);
 sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2);
 sfRenderWindow *create_window(sfVector2u win_size,
