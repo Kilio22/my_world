@@ -14,10 +14,10 @@ static int is_folder(const char *pathname)
 {
     int fd = open(pathname, __O_DIRECTORY);
 
+    if (fd == -1)
+        return (0);
     close(fd);
-    if (fd != -1)
-        return (1);
-    return (0);
+    return (1);
 }
 
 int my_access(const char *pathname, int mode)
@@ -29,8 +29,8 @@ int my_access(const char *pathname, int mode)
     if (is_folder(pathname))
         return (0);
     fd = open(pathname, O_RDONLY);
+    if (fd == -1)
+        return (0);
     close(fd);
-    if (fd != -1)
-        return (1);
-    return (0);
+    return (1);
 }
