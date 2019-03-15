@@ -22,7 +22,7 @@ const sfVector2f start_offset = {500.0, 200.0};
 const char *input_font_path = "assets/pixelmix.ttf";
 const char *cursor_path = "assets/main_cursor.png";
 const sfColor toolbox_color = {189, 195, 199, 255};
-const char *icon_fp[12] = {
+const char *icon_fp[14] = {
     "assets/icone/dig_up.png",
     "assets/icone/dig_down.png",
     "assets/icone/tiles.png",
@@ -34,9 +34,11 @@ const char *icon_fp[12] = {
     "assets/icone/incr2.png",
     "assets/icone/incr3.png",
     "assets/icone/incr4.png",
+    "assets/icone/save.png",
+    "assets/icone/load.png",
     "assets/icone/corner.png"
 };
-const sfVector2f icon_pos[11] = {
+const sfVector2f icon_pos[13] = {
     {10, 10},
     {80, 10},
     {30, 80},
@@ -47,7 +49,9 @@ const sfVector2f icon_pos[11] = {
     {10, 370},
     {80, 370},
     {10, 440},
-    {80, 440}
+    {80, 440},
+    {30, 510},
+    {30, 580}
 };
 const char *tile_textures[6] = {
     "assets/sprites/grass.png",
@@ -57,7 +61,7 @@ const char *tile_textures[6] = {
     "assets/sprites/stone.png",
     "assets/sprites/stone2.png"
 };
-const char *text[11] = {
+const char *text[13] = {
     "Dig Up",
     "Dig Down",
     "Tile/Corner\n     (S)",
@@ -68,7 +72,9 @@ const char *text[11] = {
     "+1 column",
     "-1 column",
     "+1 row",
-    "-1 row"
+    "-1 row",
+    "save map",
+    "load map"
 };
 const char *warning_msg =
 "      Be careful ! If you try to work on a really big map, \n\

@@ -18,7 +18,7 @@
 
 #define IN_RADIANS(angle) (angle * M_PI / 180)
 #define FILE_RIGHTS S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
-#define NB_BUTTONS 11
+#define NB_BUTTONS 13
 
 extern const int start_x;
 extern const int start_y;
@@ -34,7 +34,7 @@ extern const char *input_font_path;
 extern const char *cursor_path;
 extern const sfColor trans_white;
 extern const sfColor toolbox_color;
-extern const char *icon_fp[12];
+extern const char *icon_fp[14];
 extern const sfVector2f icon_pos[NB_BUTTONS];
 extern const char *tile_textures[6];
 extern const char *text[NB_BUTTONS];
