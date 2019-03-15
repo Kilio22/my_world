@@ -48,6 +48,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		analyse_click.c \
 		analyse_events.c \
 		analyse_key_pressed.c \
+		apply_buttons_effects.c	\
 		create_interface.c \
 		create_map.c \
 		create_toolbox.c \

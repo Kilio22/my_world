@@ -176,6 +176,7 @@ void delete_column(map_t *map);
 void add_column(map_t *map);
 void reset_corner(interface_t *face, map_t *map);
 void reset_square(interface_t *face, map_t *map);
+void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map);
 
 /* FILE SYSTEM */
 FILE *open_file(char *filepath);
