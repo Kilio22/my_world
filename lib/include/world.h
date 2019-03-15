@@ -96,6 +96,7 @@ typedef struct interface_s {
 } interface_t;
 
 int save_map(map_t *map);
+void display_map(map_t *map);
 void update_points(map_t *map);
 int transfer_mouse_press(int tag);
 void manage_mouse(interface_t *face, map_t *map);
@@ -139,8 +140,10 @@ void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
 toolbox_t *create_toolbox(void);
 map_t *create_map(char *filepath);
 sfVector2f **create_2d_map(map_t *map);
+map_t *set_map(map_t *map, char *filepath);
 interface_t *create_interface(char *map_name);
 sfVertexArray *create_line(sfVector2f points[2], sfColor color);
+void load_new_map(interface_t *face, map_t *map);
 sfVertexArray *create_holding_line(sfVector2f pos1, sfVector2f pos2);
 sfRenderWindow *create_window(sfVector2u win_size,
                             sfVector2i pos, char *name, int mode);
@@ -182,7 +185,6 @@ FILE *open_file(char *filepath);
 int my_access(const char *pathname, int mode);
 
 /* LOAD MAP */
-int reset_map(map_t *map);
 int load_map(map_t *map, char *filepath);
 int **get_points(FILE *stream, map_t *map);
 int get_size_of_map(FILE *stream, map_t *map);

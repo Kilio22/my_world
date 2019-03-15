@@ -72,6 +72,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		highlight_square.c \
 		load_map_altitudes.c \
 		load_map.c \
+		load_new_map.c \
 		manage_mouse.c \
 		manage_view.c \
 		manage_viewmode.c \

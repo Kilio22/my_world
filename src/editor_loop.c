@@ -21,6 +21,10 @@ int loop_editor(interface_t *face, map_t *map, toolbox_t *tool)
         sfRenderWindow_display(face->window);
         sfRenderWindow_clear(face->window, sfBlack);
         display_toolbox(face, tool, map);
+        if (map->name == NULL) {
+            sfRenderWindow_close(face->window);
+            sfRenderWindow_close(tool->win);
+        }
     }
     sfRenderWindow_destroy(face->window);
     sfRenderWindow_destroy(tool->win);

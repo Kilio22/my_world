@@ -7,7 +7,7 @@
 
 #include "world.h"
 
-void apply_buttons_eff_s(toolbox_t *tool, int i, map_t *map)
+void apply_buttons_eff_s(toolbox_t *tool, int i, interface_t *face, map_t *map)
 {
     void (*adds[4])(map_t *) = {add_column, delete_column, add_row, delete_row};
 
@@ -18,7 +18,7 @@ void apply_buttons_eff_s(toolbox_t *tool, int i, map_t *map)
     if (i == 11 && tool->state[i] == 1)
         save_map(map);
     if (i == 12 && tool->state[i] == 1)
-        map = create_map(NULL);
+        load_new_map(face, map);
 }
 
 void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map)
@@ -35,5 +35,5 @@ void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map)
         face->action = reset_square;
     if (tool->state[0] == 0 && tool->state[1] == 0 && face->mode == corner)
         face->action = reset_corner;
-    apply_buttons_eff_s(tool, i, map);
+    apply_buttons_eff_s(tool, i, face, map);
 }

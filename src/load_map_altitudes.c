@@ -62,10 +62,10 @@ int get_size_of_map(FILE *stream, map_t *map)
     char *line = read_next_line(stream);
 
     if (line == NULL)
-        return (reset_map(map));
+        return (-1);
     array = my_str_towordarray(line, " ");
     if (my_arraylen(array) != 2)
-        return (reset_map(map));
+        return (-1);
     map->rows = my_getnbr(array[0]);
     map->columns = my_getnbr(array[1]);
     return (0);

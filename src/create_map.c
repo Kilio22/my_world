@@ -41,10 +41,8 @@ static void load_blank_map(map_t *map, char *file_name)
     map->grid = create_grid(map->rows, map->columns, map);
 }
 
-map_t *create_map(char *filepath)
+map_t *set_map(map_t *map, char *filepath)
 {
-    map_t *map = malloc(sizeof(map_t));
-
     load_base_config(map);
     if (filepath == NULL)
         filepath = request_map_name();
@@ -54,5 +52,13 @@ map_t *create_map(char *filepath)
         if (load_map(map, filepath) == -1)
             return (NULL);
     }
+    return (map);
+}
+
+map_t *create_map(char *filepath)
+{
+    map_t *map = malloc(sizeof(map_t));
+
+    map = set_map(map, filepath);
     return (map);
 }

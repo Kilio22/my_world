@@ -26,26 +26,20 @@ static grid_point_t **create_grid(int x, int y, int **points, map_t *map)
     return (grid);
 }
 
-int reset_map(map_t *map)
-{
-    free(map);
-    return (-1);
-}
-
 int load_map(map_t *map, char *filepath)
 {
     FILE *stream = open_file(filepath);
     int **points;
 
     if (stream == NULL)
-        return (reset_map(map));
+        return (-1);
     map->name = filepath;
     get_size_of_map(stream, map);
     if (map->rows <= 0 || map->columns <= 0)
-        return (reset_map(map));
+        return (-1);
     points = get_points(stream, map);
     if (points == NULL)
-        return (reset_map(map));
+        return (-1);
     map->grid = create_grid(map->rows, map->columns, points, map);
     return (0);
 }
