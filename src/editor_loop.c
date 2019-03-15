@@ -24,6 +24,5 @@ int loop_editor(interface_t *face, map_t *map, toolbox_t *tool)
     }
     sfRenderWindow_destroy(face->window);
     sfRenderWindow_destroy(tool->win);
-    free(tool);
     return (0);
 }
