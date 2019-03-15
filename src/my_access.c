@@ -10,8 +10,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-/* Right now, the function only keeps the mode == 0 */
-
 static int is_folder(const char *pathname)
 {
     int fd = open(pathname, __O_DIRECTORY);
@@ -26,8 +24,8 @@ int my_access(const char *pathname, int mode)
 {
     int fd;
 
-    if (mode != 0)
-        return (0);
+    if (mode == 1)
+        return (is_folder(pathname));
     if (is_folder(pathname))
         return (0);
     fd = open(pathname, O_RDONLY);

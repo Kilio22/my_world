@@ -17,6 +17,7 @@
 #include <math.h>
 
 #define IN_RADIANS(angle) (angle * M_PI / 180)
+#define FILE_RIGHTS S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 #define NB_BUTTONS 11
 
 extern const int start_x;
@@ -92,6 +93,7 @@ typedef struct interface_s {
     void (*action)(struct interface_s *, struct map_s *);
 } interface_t;
 
+int save_map(map_t *map);
 void update_points(map_t *map);
 int transfer_mouse_press(int tag);
 void manage_mouse(interface_t *face, map_t *map);

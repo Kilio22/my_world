@@ -39,7 +39,7 @@ int load_map(map_t *map, char *filepath)
 
     if (stream == NULL)
         return (reset_map(map));
-    map->name = my_strdup(filepath);
+    map->name = filepath;
     get_size_of_map(stream, map);
     if (map->rows <= 0 || map->columns <= 0)
         return (reset_map(map));

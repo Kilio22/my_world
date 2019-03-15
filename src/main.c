@@ -7,6 +7,7 @@
 
 #include "world.h"
 #include "my_stdio.h"
+#include "my_string.h"
 #include "my_printf.h"
 
 void display_map(map_t *map)
@@ -32,6 +33,20 @@ static int load_editor(map_t *map)
     return (0);
 }
 
+static int save_map_on_end(map_t *map)
+{
+    int n_return = save_map(map);
+
+    if (n_return < 0) {
+        my_puts("There was an error when saving your file.");
+        return (-1);
+    }
+    my_putstr("Successfuly saved ");
+    my_putstr(map->name);
+    my_puts(" !");
+    return (0);
+}
+
 int main(int argc, char *argv[])
 {
     char *map_name = NULL;
@@ -42,15 +57,16 @@ int main(int argc, char *argv[])
             my_puts("Bad file extention (can only load .world files)");
             return (84);
         } else
-            map_name = argv[1];
+            map_name = my_strdup(argv[1]);
     }
     map = create_map(map_name);
     if (map == NULL) {
         my_puts("Given file is invalid or inexistant.");
         return (84);
     }
-    display_map(map);
     load_editor(map);
+    if (save_map_on_end(map) == -1)
+        return (84);
     destroy_map(map);
     return (0);
 }
