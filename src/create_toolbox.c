@@ -9,10 +9,10 @@
 
 void create_sounds(toolbox_t *tool)
 {
-    tool->buffer =
+    sfSoundBuffer *buffer =
 sfSoundBuffer_createFromFile("assets/selection_sound.ogg");
     tool->sound = sfSound_create();
-    sfSound_setBuffer(tool->sound, tool->buffer);
+    sfSound_setBuffer(tool->sound, buffer);
 }
 
 void create_tool_text(toolbox_t *tool)

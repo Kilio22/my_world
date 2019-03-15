@@ -15,7 +15,7 @@ void destroy_toolbox(toolbox_t *tool)
         sfText_destroy(tool->text[i]);
     }
     sfClock_destroy(tool->clock);
+    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(tool->sound));
     sfSound_destroy(tool->sound);
-    sfSoundBuffer_destroy(tool->buffer);
     free(tool);
 }
