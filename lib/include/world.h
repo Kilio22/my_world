@@ -161,6 +161,7 @@ void highlight_square(interface_t *face, map_t *map);
 void highlight_corner(interface_t *face, map_t *map);
 
 /* ACTIONS */
+char *request_map_name(void);
 int *transfer_indexes(int *indexes);
 void dig_nothing(interface_t *face, map_t *map);
 void dig_up_square(interface_t *face, map_t *map);

@@ -16,24 +16,10 @@ void display_map(map_t *map)
     my_puts(map->name);
     my_printf("%d %d\n", map->rows, map->columns);
     for (int i = 0; i < map->rows; i++) {
-        for (int j = 0; j < map->columns; j++) {
+        for (int j = 0; j < map->columns; j++)
             my_printf("%d ", map->grid[i][j].altitude);
-        }
         my_putchar('\n');
     }
-}
-
-static int load_editor(map_t *map)
-{
-    toolbox_t *toolbox = create_toolbox();
-    interface_t *interface = create_interface(map->name);
-
-    loop_editor(interface, map, toolbox);
-    destroy_toolbox(toolbox);
-    sfMusic_destroy(interface->music);
-    sfSoundBuffer_destroy(interface->buff_dig);
-    sfSound_destroy(interface->sound_dig);
-    return (0);
 }
 
 static int save_map_on_end(map_t *map)
@@ -47,6 +33,19 @@ static int save_map_on_end(map_t *map)
     my_putstr("Successfuly saved ");
     my_putstr(map->name);
     my_puts(" !");
+    return (0);
+}
+
+static int load_editor(map_t *map)
+{
+    toolbox_t *toolbox = create_toolbox();
+    interface_t *interface = create_interface(map->name);
+
+    loop_editor(interface, map, toolbox);
+    destroy_toolbox(toolbox);
+    sfMusic_destroy(interface->music);
+    sfSoundBuffer_destroy(interface->buff_dig);
+    sfSound_destroy(interface->sound_dig);
     return (0);
 }
 
