@@ -46,6 +46,8 @@ static char *request_map_name(void)
 {
     char *name = prompt_user_input((sfVector2u){700, 50}, "Enter the map name");
 
+    if (name == NULL)
+        name = my_strdup("default");
     if (!my_str_ends_with(name, ".world"))
         name = my_strcat(name, my_strdup(".world"));
     return (name);

@@ -10,7 +10,7 @@
 
 char *my_strndup(const char *s, size_t n)
 {
-    register size_t len = my_strnlen(s, n);
+    register size_t len = my_strnlen(s, n) + 1;
     char *new = malloc(len);
 
     if (new == NULL)
