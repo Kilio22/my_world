@@ -20,8 +20,9 @@ int is_on_button_bool(sfSprite *sprite, sfVector2f mouse)
 
 void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map)
 {
-    void (*tab[4])(map_t *) = {add_column, delete_column, add_row, delete_row};
+    void (*adds[4])(map_t *) = {add_column, delete_column, add_row, delete_row};
 
+    printf("%d\n", i);
     if (i == 0 && face->mode == square)
         face->action = dig_up_square;
     if (i == 0 && face->mode == corner)
@@ -37,7 +38,11 @@ void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map)
     if (i == 6 && tool->state[i] == 1)
         reset_map_altitude(map);
     if (i >= 7 && i <= 10 && tool->state[i] == 1)
-        tab[i - 7](map);
+        adds[i - 7](map);
+    if (i == 11 && tool->state[i] == 1)
+        save_map(map);
+    if (i == 12 && tool->state[i] == 1)
+        map = create_map(NULL);
 }
 
 void change_sprite(toolbox_t *toolbox, int i, interface_t *face)
