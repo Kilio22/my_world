@@ -91,6 +91,7 @@ map_t *map)
     for (int i = 0; i < NB_BUTTONS; i++) {
         button_pos = sfSprite_getGlobalBounds(toolbox->sprites[i]);
         if (sfFloatRect_intersects(&button_pos, &mouse_pos, NULL)) {
+            sfSound_play(toolbox->sound);
             return (check_buttons_state(toolbox, i, face, map));
         }
     }

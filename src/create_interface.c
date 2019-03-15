@@ -8,6 +8,17 @@
 #include "world.h"
 #include "my_string.h"
 
+void create_music(interface_t *face)
+{
+    face->music = sfMusic_createFromFile("assets/music.ogg");
+    sfMusic_setLoop(face->music, sfTrue);
+    sfMusic_setVolume(face->music, 50);
+    sfMusic_play(face->music);
+    face->buff_dig = sfSoundBuffer_createFromFile("assets/dig.ogg");
+    face->sound_dig = sfSound_create();
+    sfSound_setBuffer(face->sound_dig, face->buff_dig);
+}
+
 void create_textures_for_tiles(interface_t *face)
 {
     sfTexture *texture;
@@ -41,5 +52,6 @@ interface_t *create_interface(char *map_name)
     interface->action = dig_up_square;
     sfView_setSize(interface->view, vrec);
     create_textures_for_tiles(interface);
+    create_music(interface);
     return (interface);
 }

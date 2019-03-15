@@ -91,6 +91,9 @@ typedef struct interface_s {
     sfView *view;
     void (*highlight)(struct interface_s *, struct map_s *);
     void (*action)(struct interface_s *, struct map_s *);
+    sfMusic *music;
+    sfSound *sound_dig;
+    sfSoundBuffer *buff_dig;
 } interface_t;
 
 int save_map(map_t *map);

@@ -30,6 +30,9 @@ static int load_editor(map_t *map)
 
     loop_editor(interface, map, toolbox);
     destroy_toolbox(toolbox);
+    sfMusic_destroy(interface->music);
+    sfSoundBuffer_destroy(interface->buff_dig);
+    sfSound_destroy(interface->sound_dig);
     return (0);
 }
 

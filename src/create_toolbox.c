@@ -7,6 +7,14 @@
 
 #include "world.h"
 
+void create_sounds(toolbox_t *tool)
+{
+    tool->buffer =
+sfSoundBuffer_createFromFile("assets/selection_sound.ogg");
+    tool->sound = sfSound_create();
+    sfSound_setBuffer(tool->sound, tool->buffer);
+}
+
 void create_tool_text(toolbox_t *tool)
 {
     sfFont *font = sfFont_createFromFile("assets/pixelmix.ttf");
@@ -40,11 +48,8 @@ toolbox_t *create_toolbox(void)
     toolbox_t *toolbox = malloc(sizeof(toolbox_t));
     sfVector2u tvec = {150, 900};
 
-    toolbox->buffer =
-sfSoundBuffer_createFromFile("assets/selection_sound.ogg");
     create_button(toolbox);
-    toolbox->sound = sfSound_create();
-    sfSound_setBuffer(toolbox->sound, toolbox->buffer);
+    create_sounds(toolbox);
     toolbox->clock = sfClock_create();
     toolbox->win = create_window(tvec, toolbox_pos, "Tool_box", 5);
     toolbox->state[0] = 2;

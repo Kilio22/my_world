@@ -22,6 +22,7 @@ void dig_down_corner(interface_t *face, map_t *map)
         update_selected_point(face, map);
         index = transfer_indexes(NULL);
     }
+    sfSound_play(face->sound_dig);
     dcr_corner_altitude(map, index[0], index[1]);
 }
 
@@ -29,6 +30,7 @@ static int dcr_square_alitude(interface_t *face, map_t *map, int i, int j)
 {
     if (!is_on_tile(face, &map->grid[i], j))
         return (0);
+    sfSound_play(face->sound_dig);
     map->grid[i][j].altitude -= 1;
     map->grid[i][j + 1].altitude -= 1;
     map->grid[i + 1][j].altitude -= 1;
