@@ -10,18 +10,6 @@
 #include "my_string.h"
 #include "my_printf.h"
 
-void display_map(map_t *map)
-{
-    my_putstr("Map name : ");
-    my_puts(map->name);
-    my_printf("%d %d\n", map->rows, map->columns);
-    for (int i = 0; i < map->rows; i++) {
-        for (int j = 0; j < map->columns; j++)
-            my_printf("%d ", map->grid[i][j].altitude);
-        my_putchar('\n');
-    }
-}
-
 static int save_map_on_end(map_t *map)
 {
     int n_return = save_map(map);
@@ -51,7 +39,7 @@ static int load_editor(map_t *map)
     return (0);
 }
 
-int main(int argc, char *argv[])
+static int launch_editor(int argc, char *argv[])
 {
     char *map_name = NULL;
     map_t *map;
@@ -73,4 +61,9 @@ int main(int argc, char *argv[])
         return (84);
     destroy_map(map);
     return (0);
+}
+
+int main(int argc, char *argv[])
+{
+    return (launch_editor(argc, argv));
 }

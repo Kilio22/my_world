@@ -96,7 +96,6 @@ typedef struct interface_s {
 } interface_t;
 
 int save_map(map_t *map);
-void display_map(map_t *map);
 void update_points(map_t *map);
 int transfer_mouse_press(int tag);
 void manage_mouse(interface_t *face, map_t *map);
