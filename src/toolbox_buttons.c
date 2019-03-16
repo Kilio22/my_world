@@ -22,7 +22,7 @@ void change_sprite(toolbox_t *toolbox, int i, interface_t *face)
 {
     if (i == 2 && toolbox->state[i] == 0) {
         toolbox->state[i] = 1;
-        toolbox->textures[i] = sfTexture_createFromFile(icon_fp[13], NULL);
+        toolbox->textures[i] = sfTexture_createFromFile(icon_fp[14], NULL);
         sfSprite_setTexture(toolbox->sprites[i], toolbox->textures[i], sfTrue);
         sfSprite_setColor(toolbox->sprites[i], sfWhite);
         return (change_mode(face));

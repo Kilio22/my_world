@@ -50,6 +50,7 @@ interface_t *create_interface(char *map_name)
     interface->view = sfView_create();
     interface->highlight = highlight_square;
     interface->action = dig_up_square;
+    interface->clock_save = sfClock_create();
     sfView_setSize(interface->view, vrec);
     create_textures_for_tiles(interface);
     create_music(interface);

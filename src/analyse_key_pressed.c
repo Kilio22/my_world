@@ -61,7 +61,7 @@ void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
         reset_view(face, map);
     if (key >= sfKeyLeft && key <= sfKeyDown)
         analyse_arrows(face, key, map, tool);
-    if (key == sfKeyS)
+    if (key == sfKeyE)
         change_sprite(tool, 2, face);
     if (key == sfKeyR)
         transformation_mode(face, tool);

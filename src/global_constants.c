@@ -22,7 +22,7 @@ const sfVector2f start_offset = {500.0, 200.0};
 const char *input_font_path = "assets/pixelmix.ttf";
 const char *cursor_path = "assets/main_cursor.png";
 const sfColor toolbox_color = {189, 195, 199, 255};
-const char *icon_fp[14] = {
+const char *icon_fp[15] = {
     "assets/icone/dig_up.png",
     "assets/icone/dig_down.png",
     "assets/icone/tiles.png",
@@ -34,11 +34,12 @@ const char *icon_fp[14] = {
     "assets/icone/incr2.png",
     "assets/icone/incr3.png",
     "assets/icone/incr4.png",
+    "assets/icone/rename.png",
     "assets/icone/save.png",
     "assets/icone/load.png",
     "assets/icone/corner.png"
 };
-const sfVector2f icon_pos[13] = {
+const sfVector2f icon_pos[14] = {
     {10, 10},
     {80, 10},
     {30, 80},
@@ -51,7 +52,8 @@ const sfVector2f icon_pos[13] = {
     {10, 440},
     {80, 440},
     {30, 510},
-    {30, 580}
+    {30, 580},
+    {30, 650}
 };
 const char *tile_textures[6] = {
     "assets/sprites/grass.png",
@@ -61,10 +63,10 @@ const char *tile_textures[6] = {
     "assets/sprites/stone.png",
     "assets/sprites/stone2.png"
 };
-const char *text[13] = {
+const char *text[14] = {
     "Dig Up",
     "Dig Down",
-    "Tile/Corner\n     (S)",
+    "Tile/Corner\n     (E)",
     "Rotate Mode\n     (R)",
     "Zoom in\n(mouse wheel)",
     "Zoom out\n(mouse wheel)",
@@ -73,8 +75,9 @@ const char *text[13] = {
     "-1 column",
     "+1 row",
     "-1 row",
-    "save map",
-    "load map"
+    "Rename map",
+    "Save map\n(CTRL+S)",
+    "Load map\n(CTRL+O)"
 };
 const char *warning_msg =
 "      Be careful ! If you try to work on a really big map, \n\

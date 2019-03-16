@@ -15,9 +15,9 @@ void apply_buttons_eff_s(toolbox_t *tool, int i, interface_t *face, map_t *map)
         reset_map_altitude(map);
     if (i >= 7 && i <= 10 && tool->state[i] == 1)
         adds[i - 7](map);
-    if (i == 11 && tool->state[i] == 1)
-        save_map(map);
     if (i == 12 && tool->state[i] == 1)
+        save_map(map);
+    if (i == 13 && tool->state[i] == 1)
         load_new_map(face, map);
 }
 
