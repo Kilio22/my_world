@@ -54,12 +54,12 @@ SRC	=	text_prompt/prompt_user_input.c \
 		create_toolbox.c \
 		create_window.c \
 		destroy_map.c \
-		destroy_toolbox.c	\
+		destroy_toolbox.c \
 		dig_down.c \
 		dig_nothing.c \
 		dig_up.c \
 		dig_what.c \
-		display_warning.c	\
+		display_warning.c \
 		draw_lines.c \
 		draw_square.c \
 		draw_tiles.c \
@@ -73,6 +73,7 @@ SRC	=	text_prompt/prompt_user_input.c \
 		load_map_altitudes.c \
 		load_map.c \
 		load_new_map.c \
+		load_random_map.c \
 		manage_mouse.c \
 		manage_view.c \
 		manage_viewmode.c \
@@ -81,12 +82,13 @@ SRC	=	text_prompt/prompt_user_input.c \
 		my_str_ends_with.c \
 		our_utils.c	\
 		projection_3d.c \
+		randomize_seed.c \
 		rename_map.c \
 		reset_map.c	\
 		save_map.c \
 		toolbox_buttons.c \
 		toolbox_loop.c \
-		update_map_size.c	\
+		update_map_size.c \
 		update_points.c
 
 SRC_LIB	=	my string stdio \

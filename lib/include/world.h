@@ -18,6 +18,7 @@
 
 #define IN_RADIANS(angle) (angle * M_PI / 180)
 #define FILE_RIGHTS S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
+#define NEG_RAND(rand) (rand - RAND_MAX / 2)
 #define NB_BUTTONS 14
 
 extern const int start_x;
@@ -135,6 +136,7 @@ void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool);
 void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
                         toolbox_t *tool);
+void setup_random_seed(void);
 
 /* CREATE */
 toolbox_t *create_toolbox(void);
@@ -188,6 +190,7 @@ int my_access(const char *pathname, int mode);
 int load_map(map_t *map, char *filepath);
 int **get_points(FILE *stream, map_t *map);
 int get_size_of_map(FILE *stream, map_t *map);
+void load_random_map(map_t *map, char *file_name);
 void change_map_name(interface_t *face, map_t *map);
 
 #endif

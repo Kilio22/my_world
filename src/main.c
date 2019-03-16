@@ -44,14 +44,14 @@ static int launch_editor(int argc, char *argv[])
     char *map_name = NULL;
     map_t *map;
 
-    if (argc >= 2) {
+    if (argc >= 2 && my_strcmp(argv[1], "-r")) {
         if (!my_str_ends_with(argv[1], ".world")) {
             my_puts("Bad file extention (can only load .world files)");
             return (84);
         } else
             map_name = my_strdup(argv[1]);
     }
-    map = create_map(map_name);
+    map = create_map((argc == 2 && map_name == NULL) ? "-r" : map_name);
     if (map == NULL) {
         my_puts("Given file is invalid or inexistant.");
         return (84);
@@ -89,5 +89,6 @@ int main(int argc, char *argv[])
 {
     if (argc == 2 && my_strcmp("-h", argv[1]) == 0)
         return (display_help());
+    setup_random_seed();
     return (launch_editor(argc, argv));
 }

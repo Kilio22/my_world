@@ -6,6 +6,7 @@
 */
 
 #include "world.h"
+#include "my_string.h"
 
 static grid_point_t **create_grid(int x, int y, map_t *map)
 {
@@ -43,11 +44,20 @@ static void load_blank_map(map_t *map, char *file_name)
 
 map_t *set_map(map_t *map, char *filepath)
 {
+    int rand_mode = 0;
+
+    if (filepath != NULL && !my_strcmp("-r", filepath)) {
+        filepath = NULL;
+        rand_mode = 1;
+    }
     load_base_config(map);
     if (filepath == NULL)
         filepath = request_map_name();
     if (!my_access(filepath, 0)) {
-        load_blank_map(map, filepath);
+        if (!rand_mode)
+            load_blank_map(map, filepath);
+        else
+            load_random_map(map, filepath);
     } else {
         if (load_map(map, filepath) == -1)
             return (NULL);
