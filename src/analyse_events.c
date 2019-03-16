@@ -29,7 +29,7 @@ void resize_window(interface_t *face, sfSizeEvent size)
 void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool)
 {
-    if (event.type == sfEvtClosed) {
+    if (event.type == sfEvtClosed || event.key.code == sfKeyEscape) {
         sfRenderWindow_close(face->window);
         sfRenderWindow_close(tool->win);
     }
