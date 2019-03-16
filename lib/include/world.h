@@ -39,7 +39,6 @@ extern const sfVector2f icon_pos[NB_BUTTONS];
 extern const char *tile_textures[6];
 extern const char *text[NB_BUTTONS];
 extern const sfColor hover;
-extern const char *warning_msg;
 
 typedef enum {
     up,
@@ -111,6 +110,7 @@ void manage_zoom_at(sfVector2i m, interface_t *face, float zoom);
 float calcul_points(sfVector2f p1, sfVector2f p2, sfVector2f p3);
 char *prompt_user_input(sfVector2u win_size, char *win_name);
 int is_closest_corner(interface_t *face, map_t *map, sfVector2f point);
+char *my_realloc_str(char *f, char *b);
 
 /* TOOLBOX */
 void display_toolbox(interface_t *face, toolbox_t *toolbox, map_t *map);
@@ -125,7 +125,7 @@ void check_zoom(toolbox_t *tool, interface_t *face);
 /* EVENTS */
 void check_warning(map_t *map);
 void change_mode(interface_t *face);
-void display_warning(const char *str);
+void display_warning(void);
 void manage_rotate(sfKeyCode key, map_t *map);
 void reset_view(interface_t *face, map_t *map);
 void manage_translation(sfKeyCode key, map_t *map);

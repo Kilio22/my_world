@@ -6,6 +6,8 @@
 */
 
 #include "world.h"
+#include "my_stdio.h"
+#include "my_string.h"
 
 int check_clock_warning(sfClock *clock)
 {
@@ -21,11 +23,15 @@ int check_clock_warning(sfClock *clock)
     return (0);
 }
 
-sfText *create_text_warning(const char *str)
+sfText *create_text_warning(void)
 {
     sfText *text = sfText_create();
     sfFont *font = sfFont_createFromFile("assets/pixelmix.ttf");
+    char *str = my_strdup(
+"      Be careful ! If you try to work on a really big map, \n");
 
+    str = my_realloc_str(str,
+"  your computer will have a hard time working at full speed !");
     sfText_setString(text, str);
     sfText_setFont(text, font);
     sfText_setPosition(text, (sfVector2f){0, 16});
@@ -42,13 +48,13 @@ void analyse_event_warning(sfEvent event, sfRenderWindow *win, sfClock *clock)
         sfRenderWindow_close(win);
 }
 
-void display_warning(const char *str)
+void display_warning(void)
 {
     sfVector2u win_size = {1300, 100};
     sfVector2i win_pos = {100, 540};
     sfEvent event;
     sfClock *clock = sfClock_create();
-    sfText *text = create_text_warning(str);
+    sfText *text = create_text_warning();
     sfRenderWindow *win = create_window(win_size, win_pos, "WARNING", 7);
 
     while (sfRenderWindow_isOpen(win)) {
@@ -69,7 +75,7 @@ void check_warning(map_t *map)
     if (i == 1)
         return;
     if (map->columns * map->rows >= 400) {
-        display_warning(warning_msg);
+        display_warning();
         i++;
     }
 }
