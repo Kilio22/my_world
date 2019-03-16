@@ -68,20 +68,20 @@ int display_help(void)
     my_puts("USAGE");
     my_puts("\t./my_world [*.world]");
     my_puts(
-"\t[*.world]: OPTIONNAL, file with good parameters to be loaded as a map");
+"\t*.world: a file that can be loaded as a map (check .legend for more info)");
     my_puts("DESCRIPTION");
-    my_puts("\tMy_world is a terraformer.");
-    my_putstr(
-"\tYou can load a map saved or created by yourself by giving it as parameter");
-    my_puts(" (see the .legend file to create a valid map).");
-    my_putstr("\tIf you don't put any parameter, a window will invite you to ");
-    my_putstr("enter the name of your map. If you enter an existant map, ");
-    my_puts("it will be loaded, on the contrary it will be created.");
-    my_putstr("\tOnce the map loaded, you'll be able to modify it by using ");
-    my_puts("tools in the toolbox. Click on the tools to use them!");
+    my_puts("\tMy_world is a world editor, you can terraform your own world!");
+    my_puts("\tYou can load a saved map by giving it as parameter.");
+    my_putstr("\tIf you don't give any field, you will have to enter a name ");
+    my_putstr("for your new map in the window popup. ");
+    my_putstr("Entering the path of an existing map will make it ");
+    my_puts("be loaded instead.");
+    my_puts("\tMind that you don't have to put the .world when giving a name.");
+    my_putstr("\tOnce the map is loaded, you'll be able to modify it by using");
+    my_puts(" the tools located in the toolbox. Try clicking on them!");
     my_puts("\tIf you close the map, the program will exit and save your map.");
-    my_putstr("\tDuring the game, if you load a map by using the tool, the ");
-    my_puts("map will be save only if you click on the save tool.");
+    my_putstr("\tWhile editing, loading a new map will not save the ");
+    my_puts("current one (unless you save it of course).");
     return (0);
 }
 
