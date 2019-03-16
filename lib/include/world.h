@@ -179,7 +179,7 @@ void delete_column(map_t *map);
 void add_column(map_t *map);
 void reset_corner(interface_t *face, map_t *map);
 void reset_square(interface_t *face, map_t *map);
-void apply_buttons_effect(toolbox_t *tool, int i, interface_t *face, map_t *map);
+void apply_buttons_effect(toolbox_t *, int, interface_t *, map_t *);
 
 /* FILE SYSTEM */
 FILE *open_file(char *filepath);
@@ -189,5 +189,6 @@ int my_access(const char *pathname, int mode);
 int load_map(map_t *map, char *filepath);
 int **get_points(FILE *stream, map_t *map);
 int get_size_of_map(FILE *stream, map_t *map);
+void change_map_name(interface_t *face, map_t *map);
 
 #endif

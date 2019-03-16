@@ -8,13 +8,14 @@
 #include "my.h"
 #include "my_string.h"
 
-int my_str_isnum(char const *str)
+int my_str_isnum(char const *str, int neg)
 {
-    int len = my_strlen(str);
-
-    for (int i = 0; i < len; i++) {
-        if (!my_char_isnum(str[i]))
+    if (neg && *str == '-' && my_strlen(str) > 1)
+        str++;
+    while (*str) {
+        if (!my_char_isnum(*str))
             return (0);
+        str++;
     }
     return (1);
 }

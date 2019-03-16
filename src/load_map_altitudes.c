@@ -30,7 +30,7 @@ static char **split_line(char *line, size_t expected_fields)
     if (my_arraylen(array) != expected_fields)
         return (NULL);
     for (int i = 0; array[i]; i++) {
-        if (!my_str_isnum(array[i]))
+        if (!my_str_isnum(array[i], 1))
             return (NULL);
     }
     return (array);
@@ -51,7 +51,7 @@ int **get_points(FILE *stream, map_t *map)
         if (array == NULL)
             return (NULL);
         for (int j = 0; j < map->columns; j++)
-            points[i][j] = my_str_to_int(array[j]);
+            points[i][j] = my_getnbr(array[j]);
     }
     return (points);
 }

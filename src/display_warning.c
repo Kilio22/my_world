@@ -42,9 +42,11 @@ sfText *create_text_warning(void)
 
 void analyse_event_warning(sfEvent event, sfRenderWindow *win, sfClock *clock)
 {
+    if (event.type == sfEvtClosed)
+        sfRenderWindow_close(win);
     if (check_clock_warning(clock) == 0)
         return;
-    if (event.type == sfEvtClosed || event.type == sfEvtKeyPressed)
+    if (event.type == sfEvtKeyPressed)
         sfRenderWindow_close(win);
 }
 

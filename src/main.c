@@ -41,6 +41,8 @@ static int load_editor(map_t *map)
     toolbox_t *toolbox = create_toolbox();
     interface_t *interface = create_interface(map->name);
 
+    if (toolbox == NULL || interface == NULL)
+        return (-1);
     loop_editor(interface, map, toolbox);
     destroy_toolbox(toolbox);
     sfMusic_destroy(interface->music);

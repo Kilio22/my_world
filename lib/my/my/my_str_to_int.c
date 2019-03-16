@@ -11,7 +11,7 @@ int my_str_to_int(const char *str)
 {
     int value = 0;
 
-    if (my_str_isnum(str) == 0)
+    if (my_str_isnum(str, 1) == 0)
         return (0);
     for (int i = 0; str[i] != '\0'; i++) {
         value *= 10;

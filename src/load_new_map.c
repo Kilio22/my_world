@@ -9,6 +9,17 @@
 #include "my_stdio.h"
 #include "my_string.h"
 
+void change_map_name(interface_t *face, map_t *map)
+{
+    char *map_name = request_map_name();
+    char *win_name = my_strdup("Currently editing \"");
+
+    win_name = my_strcat(win_name, my_strdup(map_name));
+    win_name = my_strcat(win_name, my_strdup("\""));
+    map->name = map_name;
+    sfRenderWindow_setTitle(face->window, win_name);
+}
+
 void load_new_map(interface_t *face, map_t *map)
 {
     char *map_name = request_map_name();

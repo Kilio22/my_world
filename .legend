@@ -1,10 +1,11 @@
 Every map ending with a .world can be loaded.
 
 The pattern in the files should be looking like this :
+(x is the number of rows)
+(y is the number of colums per rows)
+(n is the altitude of a map point)
 
 x y
-n n n n ... n   (y times)
-n n n n ... n   (y times)
 n n n n ... n   (y times)
 n n n n ... n   (y times)
 n n n n ... n   (y times)
@@ -15,4 +16,7 @@ n n n n ... n   (y times)
 n n n n ... n   (y times)
 (x times)
 
-n is the altitude of a map point
+
+
+
+Or you could just be launching the world editor and look for yourself ! 
