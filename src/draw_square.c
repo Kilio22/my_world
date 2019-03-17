@@ -25,7 +25,8 @@ int find_texture(int a1, int a2, int a3, int a4)
     return (0);
 }
 
-static sfVertexArray *create_triangle(sfVector2f points[3], sfColor color)
+void create_triangle(sfVector2f points[3], sfColor color, interface_t *face,
+int i)
 {
     sfVertexArray *v_array = sfVertexArray_create();
     sfVector2f p0 = {0, 0};
@@ -39,22 +40,20 @@ static sfVertexArray *create_triangle(sfVector2f points[3], sfColor color)
     sfVertexArray_append(v_array, v2);
     sfVertexArray_append(v_array, v3);
     sfVertexArray_setPrimitiveType(v_array, sfTrianglesStrip);
-    return (v_array);
+    sfRenderWindow_drawVertexArray(face->window, v_array, face->states[i]);
+    sfVertexArray_destroy(v_array);
 }
 
 void draw_square(interface_t *face, grid_point_t **point, int j, sfColor clr)
 {
     sfVector2f points[3];
-    sfVertexArray *v_array;
     int i = find_texture(((*point)[j]).altitude, ((*point)[j + 1]).altitude,
 ((*(point + 1))[j]).altitude, ((*(point + 1))[j + 1]).altitude);
 
     points[0] = ((*point)[j]).point;
     points[1] = ((*point)[j + 1]).point;
     points[2] = ((*(point + 1))[j]).point;
-    v_array = create_triangle(points, clr);
-    sfRenderWindow_drawVertexArray(face->window, v_array, face->states[i]);
+    create_triangle(points, clr, face, i);
     points[0] = ((*(point + 1))[j + 1]).point;
-    v_array = create_triangle(points, clr);
-    sfRenderWindow_drawVertexArray(face->window, v_array, face->states[i]);
+    create_triangle(points, clr, face, i);
 }

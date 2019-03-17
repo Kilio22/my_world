@@ -7,6 +7,13 @@
 
 #include "world.h"
 
+
+static void display_vertex(sfRenderWindow *win, sfVertexArray *v_array)
+{
+    sfRenderWindow_drawVertexArray(win, v_array, NULL);
+    sfVertexArray_destroy(v_array);
+}
+
 static int highlight_on_cursor(interface_t *face, map_t *map, int i)
 {
     for (int j = map->columns - 1; j >= 0; j--) {
@@ -22,19 +29,19 @@ static void highlight_point(sfRenderWindow *win, map_t *map, int i, int j)
 
     if (i - 1 >= 0) {
         v_array = create_holding_line(grid[i - 1][j].point, grid[i][j].point);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        display_vertex(win, v_array);
     }
     if (i + 1 < map->rows) {
         v_array = create_holding_line(grid[i + 1][j].point, grid[i][j].point);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        display_vertex(win, v_array);
     }
     if (j - 1 >= 0) {
         v_array = create_holding_line(grid[i][j - 1].point, grid[i][j].point);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        display_vertex(win, v_array);
     }
     if (j + 1 < map->columns) {
         v_array = create_holding_line(grid[i][j + 1].point, grid[i][j].point);
-        sfRenderWindow_drawVertexArray(win, v_array, NULL);
+        display_vertex(win, v_array);
     }
 }
 

@@ -39,14 +39,18 @@ int draw_line_corner(interface_t *face, map_t *map, int i, int j)
     if (j + 1 < map->columns) {
             v_array = create_line_corner((grid[i][j]).point,
 (grid[i][j + 1]).point, face, map);
-        if (v_array != NULL)
+        if (v_array != NULL) {
             sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
+            sfVertexArray_destroy(v_array);
+        }
     }
     if (i + 1 < map->rows) {
             v_array = create_line_corner((grid[i][j]).point,
 (grid[i + 1][j]).point, face, map);
-        if (v_array != NULL)
+        if (v_array != NULL) {
             sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
+            sfVertexArray_destroy(v_array);
+        }
     }
     return (0);
 }
@@ -75,11 +79,13 @@ void draw_lines(interface_t *face, map_t *map, int i, int j)
         points[1] = (grid[i][j + 1]).point;
         v_array = create_line(points, color);
         sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
+        sfVertexArray_destroy(v_array);
     }
     if (i + 1 < map->rows) {
         points[1] = (grid[i + 1][j]).point;
         v_array = create_line(points, color);
         sfRenderWindow_drawVertexArray(face->window, v_array, NULL);
+        sfVertexArray_destroy(v_array);
     }
 }
 
