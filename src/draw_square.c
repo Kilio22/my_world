@@ -12,15 +12,15 @@ int find_texture(int a1, int a2, int a3, int a4)
 {
     int biggest = a1 + a2 + a3 + a4;
 
-    if (biggest >= -120 && biggest < 0)
+    if (biggest >= -300 && biggest < -150)
         return (1);
-    if (biggest < -120)
+    if (biggest < -300)
         return (5);
-    if (biggest > 50 && biggest <= 150)
+    if (biggest > 150 && biggest <= 400)
         return (2);
-    if (biggest > 150 && biggest <= 200)
+    if (biggest >= -150 && biggest < -50)
         return (3);
-    if (biggest > 200)
+    if (biggest > 400)
         return (4);
     return (0);
 }
