@@ -66,7 +66,8 @@ static int launch_editor(int argc, char *argv[])
 int display_help(void)
 {
     my_puts("USAGE");
-    my_puts("\t./my_world [*.world]");
+    my_puts("\t./my_world [-r / *.world]");
+    my_puts("\t-r: create a map with random altitudes.");
     my_puts(
 "\t*.world: a file that can be loaded as a map (check .legend for more info)");
     my_puts("DESCRIPTION");
