@@ -57,6 +57,10 @@ void analyse_key_pressed(interface_t *face, map_t *map, sfKeyCode key,
 {
     sfVector2u vect = {150, 900};
 
+    if (key == sfKeyEscape) {
+        sfRenderWindow_close(face->window);
+        sfRenderWindow_close(tool->win);
+    }
     if (key == sfKeySpace)
         reset_view(face, map);
     if (key >= sfKeyLeft && key <= sfKeyDown)

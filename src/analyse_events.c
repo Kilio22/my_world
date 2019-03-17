@@ -29,16 +29,16 @@ void resize_window(interface_t *face, sfSizeEvent size)
 void analyse_events(interface_t *face, map_t *map, sfEvent event,
                     toolbox_t *tool)
 {
-    if (event.type == sfEvtClosed || event.key.code == sfKeyEscape) {
+    if (event.type == sfEvtClosed) {
         sfRenderWindow_close(face->window);
         sfRenderWindow_close(tool->win);
     }
-    if (event.key.control == sfTrue && event.key.code == sfKeyS
-&& check_clock_save_status(face))
-        save_map(map);
-    if (event.key.control == sfTrue && event.key.code == sfKeyO
-&& check_clock_save_status(face))
-        load_new_map(face, map);
+    if (event.type == 5 && event.key.control && check_clock_save_status(face)) {
+        if (event.key.code == sfKeyS)
+            save_map(map);
+        if (event.key.code == sfKeyO)
+            load_new_map(face, map);
+    }
     if (event.type == sfEvtKeyReleased)
         update_button(tool);
     if (event.type == sfEvtKeyPressed)
