@@ -44,7 +44,6 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
 SRC	=	text_prompt/prompt_user_input.c \
 		text_prompt/update_input.c \
-		text_prompt/verify_input.c \
 		analyse_click.c \
 		analyse_events.c \
 		analyse_key_pressed.c \
