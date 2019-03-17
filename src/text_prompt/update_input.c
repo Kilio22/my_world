@@ -34,7 +34,7 @@ static int add_char(char *prompt, char c)
 {
     int len = my_strlen(prompt);
 
-    if (len >= NAME_MAX - 1)
+    if (len >= 30)
         return (0);
     prompt[len] = c;
     prompt[len + 1] = '\0';
