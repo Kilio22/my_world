@@ -66,13 +66,14 @@ static int launch_editor(int argc, char *argv[])
 int display_help(void)
 {
     my_puts("USAGE");
-    my_puts("\t./my_world [-r / *.world]");
-    my_puts("\t-r: create a map with random altitudes.");
+    my_puts("\t./my_world [*.world] | [-r]");
     my_puts(
-"\t*.world: a file that can be loaded as a map (check .legend for more info)");
+"\t*.world: a file that can be loaded as a map (check .legend for more info).");
+    my_putstr("\t-r: generates a random map. Giving an already existing file");
+    my_puts(" name in the window popup will NOT make this flag effective.");
     my_puts("DESCRIPTION");
     my_puts("\tMy_world is a world editor, you can terraform your own world!");
-    my_puts("\tYou can load a saved map by giving it as parameter.");
+    my_puts("\tYou can load a saved map by giving it as a parameter.");
     my_putstr("\tIf you don't give any field, you will have to enter a name ");
     my_putstr("for your new map in the window popup. ");
     my_putstr("Entering the path of an existing map will make it ");
@@ -80,9 +81,9 @@ int display_help(void)
     my_puts("\tMind that you don't have to put the .world when giving a name.");
     my_putstr("\tOnce the map is loaded, you'll be able to modify it by using");
     my_puts(" the tools located in the toolbox. Try clicking on them!");
-    my_puts("\tIf you close the map, the program will exit and save your map.");
+    my_puts("\tExiting the program at anytime will make it save your map.");
     my_putstr("\tWhile editing, loading a new map will not save the ");
-    my_puts("current one (unless you save it of course).");
+    my_puts("current one (unless you manually save it of course).");
     return (0);
 }
 
