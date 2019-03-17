@@ -51,7 +51,7 @@ static int launch_editor(int argc, char *argv[])
         } else
             map_name = my_strdup(argv[1]);
     }
-    map = create_map((argc == 2 && map_name == NULL) ? "-r" : map_name);
+    map = create_map((argc >= 2 && map_name == NULL) ? "-r" : map_name);
     if (map == NULL) {
         my_puts("Given file is invalid or inexistant.");
         return (84);
@@ -63,10 +63,10 @@ static int launch_editor(int argc, char *argv[])
     return (0);
 }
 
-int display_help(void)
+void display_help(void)
 {
     my_puts("USAGE");
-    my_puts("\t./my_world [*.world] | [-r]");
+    my_puts("\t./my_world [*.world] || [-r]");
     my_puts(
 "\t*.world: a file that can be loaded as a map (check .legend for more info).");
     my_putstr("\t-r: generates a random map. Giving an already existing file");
@@ -84,13 +84,15 @@ int display_help(void)
     my_puts("\tExiting the program at anytime will make it save your map.");
     my_putstr("\tWhile editing, loading a new map will not save the ");
     my_puts("current one (unless you manually save it of course).");
-    return (0);
+    my_puts("\tPressing SPACE will reset the current window view.");
 }
 
 int main(int argc, char *argv[])
 {
-    if (argc == 2 && my_strcmp("-h", argv[1]) == 0)
-        return (display_help());
+    if (argc == 2 && my_strcmp("-h", argv[1]) == 0) {
+        display_help();
+        return (0);
+    }
     setup_random_seed();
     return (launch_editor(argc, argv));
 }
