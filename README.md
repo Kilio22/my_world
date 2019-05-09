@@ -1,5 +1,3 @@
-# MUL_my_world_2018
-My_World - EPITECH
 # My_World
 
 - **Binary name:** my_world [*.world]
