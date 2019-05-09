@@ -62,6 +62,10 @@ on the edges of the window,
 - elements (e.g. buildings, roads) **could** be added on the map in compliance with the landforms,
 - water areas **could** be added.
 
+## Language use
+- C
+- CSFML
+
 ## Authorized functions
 
 - CSFML Library:
@@ -81,3 +85,7 @@ on the edges of the window,
     - opendir
     - readdir
     - closedir
+    
+## What does it looks like ?
+![alt text](https://raw.githubusercontent.com/Kilio22/MUL_my_world_2018/master/demo1.png)
+![alt text](https://raw.githubusercontent.com/Kilio22/MUL_my_world_2018/master/demo2.png)
