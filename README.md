@@ -86,6 +86,6 @@ on the edges of the window,
     - readdir
     - closedir
     
-## What does it looks like ?
+## What does it look like ?
 ![alt text](https://raw.githubusercontent.com/Kilio22/MUL_my_world_2018/master/demo1.png)
 ![alt text](https://raw.githubusercontent.com/Kilio22/MUL_my_world_2018/master/demo2.png)
